@@ -23,7 +23,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
-
+#include "sdcard.h"
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
   */
@@ -134,6 +134,19 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
+}
+
+
+/*
+ * 函数名：SDIO_IRQHandler
+ * 描述  ：SDIO 全局中断请求服务程序
+ * 输入  ：无
+ * 输出  ：无
+ */
+void SDIO_IRQHandler(void)
+{
+  /* 处理 SDIO 全部中断 */
+  SD_ProcessIRQSrc();
 }
 
 /******************************************************************************/

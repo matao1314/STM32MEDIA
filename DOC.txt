@@ -1,0 +1,14 @@
+//--------------------------------------------------------------------------
+CPU£ºSTM32F103VET6
+POWER:3.3
+LCD:3.2  Inch
+//--------------------------------------------------------------------------
+ARM 32-bit Cortex-M3 Microcontroller, 72MHz, 512kB Flash, 64kB SRAM,
+Flexible Static Memory Controller for SRAM, PSRAM, NOR and NAND Flash,
+PLL, Embedded Internal RC 8MHz and 32kHz, Real-Time Clock,
+Nested Interrupt Controller, Power Saving Modes, JTAG and SWD,
+4 Synch. 16-bit Timers with Input Capture, Output Compare and PWM,
+2 16-bit Advanced Timer, 2 16-bit Basic Timer, 2 16-bit Watchdog Timers,
+SysTick Timer, 3 SPI/I2S, 2 I2C, 5 USART, USB 2.0 Full Speed Interface,
+CAN 2.0B Active, 3 12-bit 16-ch A/D Converter, 2 12-bit D/A Converter, 
+SDIO, Fast I/O Ports
