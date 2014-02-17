@@ -42,7 +42,7 @@ u8 *fatbuf;			//SD卡数据缓存区
 u8 exfuns_init(void)
 {
 	fs[0]=(FATFS*)mymalloc(SRAMIN,sizeof(FATFS));	//为磁盘0工作区申请内存	
-	fs[1]=(FATFS*)mymalloc(SRAMIN,sizeof(FATFS));	//为磁盘1工作区申请内存
+//	fs[1]=(FATFS*)mymalloc(SRAMIN,sizeof(FATFS));	//为磁盘1工作区申请内存
 	file=(FIL*)mymalloc(SRAMIN,sizeof(FIL));		//为file申请内存
 	ftemp=(FIL*)mymalloc(SRAMIN,sizeof(FIL));		//为ftemp申请内存
 	fatbuf=(u8*)mymalloc(SRAMIN,512);				//为fatbuf申请内存

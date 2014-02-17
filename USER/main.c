@@ -1,4 +1,6 @@
 /* Includes ------------------------------------------------------------------*/
+#include <string.h>
+#include <stdio.h>
 #include "stm32f10x.h"
 #include "sys.h"
 #include "usart.h"		
@@ -6,13 +8,14 @@
 #include "led.h"
 #include "lcd.h"	
 #include "spi.h"
-#include <string.h>
-#include <stdio.h>
-
 #include "vs10XX.h"	
 #include "sdcard.h"
 #include "diskio.h"
 #include "sd_fs_app.h"
+#include "exfuns.h"
+#include "malloc.h"	    
+
+#include "mp3player.h"
 
 SD_CardInfo   SDCardInfo;    // 存放SD卡的信息
 SD_Error SD_USER_Init(void);//SD卡初始化
@@ -60,6 +63,11 @@ SD_Error SD_USER_Init(void)
 	{
 	/* Read CSD/CID MSD registers */
 	Status = SD_GetCardInfo( &SDCardInfo );//获得SD卡索引信息
+//printf( " \r\n Card 类型： %d ", SDCardInfo.CardType );
+  printf( " \r\n Card 容量MB： %d ", SDCardInfo.CardCapacity>>20 );
+//printf( " \r\n Card 块大小 %d ", SDCardInfo.CardBlockSize );
+//printf( " \r\n RCA  ：%d ", SDCardInfo.RCA);
+//printf( " \r\n 制造商 ID is ：%d ", SDCardInfo.SD_cid.ManufacturerID );
 	}
 	if (Status == SD_OK)
 	{
@@ -88,9 +96,8 @@ SD_Error SD_USER_Init(void)
   * @param  None
   * @retval None
   */
+FATFS ff;
 u16 ID1=0;
-SD_CardInfo info;
-FATFS	 fs;
 int main(void)
 {
   /* Add your application code here
@@ -100,11 +107,11 @@ int main(void)
 	JTAG_Set(1);  	 
 	LCD_Init(); 
 	LED_Init();
-
+ 	mem_init(SRAMIN);	//初始化内部内存池	
 //检测SD卡是否成功
 while(SD_USER_Init()!=SD_OK)
-{	POINT_COLOR=RED;
-//LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p);
+{
+POINT_COLOR=RED;
 LCD_ShowString(20, 10,8,16,16, "SD Card File!            ");
 LED0=0;
 delay_ms(500);
@@ -114,7 +121,10 @@ delay_ms(500);
 }
   sd_fs_init();//文件系统初始化-汉字字库保存在sd卡中，并将盘符设置为0 
 	NVIC_Configuration(); 
-  f_mount(0,&fs); 		 		//挂载SD卡 
+  exfuns_init();					//为fatfs相关变量申请内存  
+
+	f_mount(0,fs[0]); 		 		//挂载SD卡 
+//	f_mount(0,&ff); 		 		//挂载SD卡 
 VS_Init();	  		//初始化VS1053 
 if(0==VS_HD_Reset()){
 myprntf("HResetOk!\r\n"); 
@@ -124,27 +134,29 @@ printf("SResetOk!\r\n");
 ID1=	VS_Ram_Test();
 printf("Ram Test:0X%04X\r\n",VS_Ram_Test());//打印RAM测试结果	    
 VS_Sine_Test();	   
-
-//SD_GetCardInfo(&info);
-//printf( " \r\n Card 类型： %d ", info.CardType );
-//printf( " \r\n Card 容量MB： %d ", info.CardCapacity>>20 );
-//printf( " \r\n Card 块大小 %d ", info.CardBlockSize );
-//printf( " \r\n RCA  ：%d ", info.RCA);
-//printf( " \r\n 制造商 ID is ：%d ", info.SD_cid.ManufacturerID );
 printf("Board Init Over!\r\n"); 
-TEST();
-   while (1)
+  while (1)
   {
-	
-  LCD_Clear(RED);
-	delay_ms(500);
-
+		mp3_play();
+  	delay_ms(500);
 	 LED0=0;
    delay_ms(500);
 	 LED0=1;
 
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 void TEST()
@@ -157,7 +169,9 @@ static  char aa[9]="MUSIC/";
 res=f_opendir(&dir,"MUSIC");
 printf("res:%d\r\n",res);
 if(res == FR_OK) //打开文件夹
-{	
+{		
+//printf("res:%d line=%d\r\n",f_readdir(&dir, &fno),__LINE__ );
+
 while (f_readdir(&dir, &fno) == FR_OK) //按照顺序读文件夹
 {	
 	printf("文件名:%s\r\n",fno.fname);

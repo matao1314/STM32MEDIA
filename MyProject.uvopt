@@ -206,7 +206,7 @@
 
   <Group>
     <GroupName>SYSTEM</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <File>
@@ -276,7 +276,7 @@
 
   <Group>
     <GroupName>USER</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <File>
@@ -287,8 +287,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>130</TopLine>
-      <CurrentLine>149</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\USER\stm32f10x_it.c</PathWithFileName>
       <FilenameWithoutPath>stm32f10x_it.c</FilenameWithoutPath>
@@ -299,10 +299,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>18</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>110</TopLine>
-      <CurrentLine>117</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\USER\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -639,7 +639,7 @@
   </Group>
 
   <Group>
-    <GroupName>HARDWARE</GroupName>
+    <GroupName>HDDRIVER</GroupName>
     <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -693,8 +693,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\HARDWARE\MALLOC\malloc.c</PathWithFileName>
       <FilenameWithoutPath>malloc.c</FilenameWithoutPath>
@@ -705,7 +705,7 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>41</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
@@ -715,28 +715,14 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>36</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>28</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>452</TopLine>
-      <CurrentLine>466</CurrentLine>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\HARDWARE\VS10XX\VS10XX.c</PathWithFileName>
-      <FilenameWithoutPath>VS10XX.c</FilenameWithoutPath>
-    </File>
-    <File>
-      <GroupNumber>6</GroupNumber>
       <FileNumber>38</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>9</ColumnNumber>
+      <ColumnNumber>5</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\HARDWARE\SD\sdcard.c</PathWithFileName>
       <FilenameWithoutPath>sdcard.c</FilenameWithoutPath>
@@ -747,10 +733,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>19</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>211</TopLine>
+      <CurrentLine>211</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\HARDWARE\SD\sd_fs_app.c</PathWithFileName>
       <FilenameWithoutPath>sd_fs_app.c</FilenameWithoutPath>
@@ -763,14 +749,49 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>13</TopLine>
-      <CurrentLine>13</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\FATFS\src\diskio.c</PathWithFileName>
-      <FilenameWithoutPath>diskio.c</FilenameWithoutPath>
+      <PathWithFileName>.\HARDWARE\VS10XX\vs10XX.c</PathWithFileName>
+      <FilenameWithoutPath>vs10XX.c</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
+      <FileNumber>0</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\HARDWARE\TEXT\text.c</PathWithFileName>
+      <FilenameWithoutPath>text.c</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>6</GroupNumber>
+      <FileNumber>0</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>1</TopLine>
+      <CurrentLine>19</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\HARDWARE\TEXT\fontupd.c</PathWithFileName>
+      <FilenameWithoutPath>fontupd.c</FilenameWithoutPath>
+    </File>
+  </Group>
+
+  <Group>
+    <GroupName>FATFS</GroupName>
+    <tvExp>1</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
+    <File>
+      <GroupNumber>0</GroupNumber>
       <FileNumber>0</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -784,35 +805,21 @@
       <FilenameWithoutPath>ff.c</FilenameWithoutPath>
     </File>
     <File>
-      <GroupNumber>6</GroupNumber>
-      <FileNumber>0</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>3</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>2</CurrentLine>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\FATFS\exfuns\exfuns.c</PathWithFileName>
-      <FilenameWithoutPath>exfuns.c</FilenameWithoutPath>
-    </File>
-    <File>
-      <GroupNumber>6</GroupNumber>
+      <GroupNumber>0</GroupNumber>
       <FileNumber>0</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\FATFS\exfuns\fattester.c</PathWithFileName>
-      <FilenameWithoutPath>fattester.c</FilenameWithoutPath>
+      <PathWithFileName>.\FATFS\exfuns\exfuns.c</PathWithFileName>
+      <FilenameWithoutPath>exfuns.c</FilenameWithoutPath>
     </File>
     <File>
-      <GroupNumber>6</GroupNumber>
+      <GroupNumber>0</GroupNumber>
       <FileNumber>0</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -824,6 +831,55 @@
       <bDave2>0</bDave2>
       <PathWithFileName>.\FATFS\exfuns\mycc936.c</PathWithFileName>
       <FilenameWithoutPath>mycc936.c</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>0</GroupNumber>
+      <FileNumber>0</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>34</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>1</TopLine>
+      <CurrentLine>11</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\FATFS\src\diskio.c</PathWithFileName>
+      <FilenameWithoutPath>diskio.c</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>0</GroupNumber>
+      <FileNumber>0</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>219</TopLine>
+      <CurrentLine>226</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\FATFS\exfuns\fattester.c</PathWithFileName>
+      <FilenameWithoutPath>fattester.c</FilenameWithoutPath>
+    </File>
+  </Group>
+
+  <Group>
+    <GroupName>APP</GroupName>
+    <tvExp>0</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
+    <File>
+      <GroupNumber>0</GroupNumber>
+      <FileNumber>0</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>43</TopLine>
+      <CurrentLine>47</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\APPLICATIONS\mp3palyer\mp3player.c</PathWithFileName>
+      <FilenameWithoutPath>mp3player.c</FilenameWithoutPath>
     </File>
   </Group>
 
@@ -848,31 +904,10 @@
     </File>
   </Group>
 
-  <Group>
-    <GroupName>APP</GroupName>
-    <tvExp>1</tvExp>
-    <tvExpOptDlg>0</tvExpOptDlg>
-    <cbSel>0</cbSel>
-    <File>
-      <GroupNumber>0</GroupNumber>
-      <FileNumber>0</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>17</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>85</TopLine>
-      <CurrentLine>104</CurrentLine>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\APP\mp3palyer\mp3player.c</PathWithFileName>
-      <FilenameWithoutPath>mp3player.c</FilenameWithoutPath>
-    </File>
-  </Group>
-
   <AlienFiles>
-    <PathWithFilename>C:\Users\matao\Desktop\未完成的\STM32Media\FATFS\exfuns\fattester.h</PathWithFilename>
+    <PathWithFilename>C:\Users\matao\Desktop\未完成的\STM32Media\HARDWARE\MALLOC\malloc.h</PathWithFilename>
     <TopLine>1</TopLine>
-    <CurrentLine>1</CurrentLine>
+    <CurrentLine>17</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -2486,37 +2521,55 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>4</ActiveTab>
+      <ActiveTab>7</ActiveTab>
       <Documents>
         <Doc>
+          <Name>.\USER\main.c</Name>
+          <ColumnNumber>18</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>1</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>HARDWARE\MALLOC\malloc.h</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>17</CurrentLine>
+        </Doc>
+        <Doc>
           <Name>.\FATFS\exfuns\exfuns.c</Name>
-          <ColumnNumber>3</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>2</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\FATFS\exfuns\fattester.c</Name>
-          <ColumnNumber>4</ColumnNumber>
-          <TopLine>7</TopLine>
-          <CurrentLine>7</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\FATFS\exfuns\mycc936.c</Name>
-          <ColumnNumber>2</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>3</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>FATFS\exfuns\fattester.h</Name>
           <ColumnNumber>0</ColumnNumber>
           <TopLine>1</TopLine>
           <CurrentLine>1</CurrentLine>
         </Doc>
         <Doc>
-          <Name>.\APP\mp3palyer\mp3player.c</Name>
+          <Name>.\HARDWARE\MALLOC\malloc.c</Name>
           <ColumnNumber>0</ColumnNumber>
           <TopLine>1</TopLine>
-          <CurrentLine>10</CurrentLine>
+          <CurrentLine>1</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\FATFS\src\diskio.c</Name>
+          <ColumnNumber>34</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>11</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\HARDWARE\TEXT\fontupd.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>19</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\FATFS\exfuns\fattester.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>219</TopLine>
+          <CurrentLine>226</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\APPLICATIONS\mp3palyer\mp3player.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>43</TopLine>
+          <CurrentLine>47</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

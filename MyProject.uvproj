@@ -345,7 +345,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER, STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CMSIS\startup;.\CMSIS;.\FWLIB\inc;.\HARDWARE;.\USER;.\SYSTEM\delay;.\SYSTEM\sys;.\SYSTEM\usart;.\HARDWARE\LCD;.\HARDWARE\SPI;.\HARDWARE\SD;.\HARDWARE\FLASH;.\HARDWARE\MALLOC;.\HARDWARE\LED;.\HARDWARE\VS10XX;.\APP\mp3palyer;.\FATFS\exfuns;.\FATFS\src</IncludePath>
+              <IncludePath>.\CMSIS\startup;.\CMSIS;.\FWLIB\inc;.\HARDWARE;.\USER;.\SYSTEM\delay;.\SYSTEM\sys;.\SYSTEM\usart;.\HARDWARE\LCD;.\HARDWARE\SPI;.\HARDWARE\SD;.\HARDWARE\FLASH;.\HARDWARE\MALLOC;.\HARDWARE\LED;.\HARDWARE\VS10XX;.\HARDWARE\TEXT;.\FATFS\exfuns;.\FATFS\src;.\APPLICATIONS\mp3palyer</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -558,7 +558,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>HARDWARE</GroupName>
+          <GroupName>HDDRIVER</GroupName>
           <Files>
             <File>
               <FileName>lcd.c</FileName>
@@ -586,11 +586,6 @@
               <FilePath>.\HARDWARE\LED\led.c</FilePath>
             </File>
             <File>
-              <FileName>VS10XX.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\HARDWARE\VS10XX\VS10XX.c</FilePath>
-            </File>
-            <File>
               <FileName>sdcard.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\HARDWARE\SD\sdcard.c</FilePath>
@@ -601,10 +596,25 @@
               <FilePath>.\HARDWARE\SD\sd_fs_app.c</FilePath>
             </File>
             <File>
-              <FileName>diskio.c</FileName>
+              <FileName>vs10XX.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FATFS\src\diskio.c</FilePath>
+              <FilePath>.\HARDWARE\VS10XX\vs10XX.c</FilePath>
             </File>
+            <File>
+              <FileName>text.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\TEXT\text.c</FilePath>
+            </File>
+            <File>
+              <FileName>fontupd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\TEXT\fontupd.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>FATFS</GroupName>
+          <Files>
             <File>
               <FileName>ff.c</FileName>
               <FileType>1</FileType>
@@ -616,14 +626,29 @@
               <FilePath>.\FATFS\exfuns\exfuns.c</FilePath>
             </File>
             <File>
+              <FileName>mycc936.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FATFS\exfuns\mycc936.c</FilePath>
+            </File>
+            <File>
+              <FileName>diskio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FATFS\src\diskio.c</FilePath>
+            </File>
+            <File>
               <FileName>fattester.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\FATFS\exfuns\fattester.c</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>APP</GroupName>
+          <Files>
             <File>
-              <FileName>mycc936.c</FileName>
+              <FileName>mp3player.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\FATFS\exfuns\mycc936.c</FilePath>
+              <FilePath>.\APPLICATIONS\mp3palyer\mp3player.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -634,16 +659,6 @@
               <FileName>DOC.txt</FileName>
               <FileType>5</FileType>
               <FilePath>.\DOC.txt</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>APP</GroupName>
-          <Files>
-            <File>
-              <FileName>mp3player.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\APP\mp3palyer\mp3player.c</FilePath>
             </File>
           </Files>
         </Group>

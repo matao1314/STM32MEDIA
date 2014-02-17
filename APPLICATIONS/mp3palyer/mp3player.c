@@ -2,10 +2,9 @@
 #include "vs10xx.h"	 
 #include "delay.h"
 #include "led.h"
-//#include "key.h"
 #include "lcd.h"		 
 #include "malloc.h"
-//#include "text.h"
+#include "text.h"
 #include "string.h"
 #include "exfuns.h"
 #include "fattester.h"	 
@@ -126,7 +125,7 @@ void mp3_play(void)
 	u16 *mp3indextbl;	//音乐索引表 
  	while(f_opendir(&mp3dir,"0:/MUSIC"))//打开图片文件夹
  	{	    
-		//Show_Str(60,190,240,16,"MUSIC文件夹错误!",16,0);
+		Show_Str(60,190,240,16,"MUSIC文件夹错误!",16,0);
 		delay_ms(200);				  
 		LCD_Fill(60,190,240,206,WHITE);//清除显示	     
 		delay_ms(200);				  
@@ -134,18 +133,19 @@ void mp3_play(void)
 	totmp3num=mp3_get_tnum("0:/MUSIC"); //得到总有效文件数
   	while(totmp3num==NULL)//音乐文件总数为0		
  	{	    
-		//Show_Str(60,190,240,16,"没有音乐文件!",16,0);
+		Show_Str(60,190,240,16,"没有音乐文件!",16,0);
 		delay_ms(200);				  
 		LCD_Fill(60,190,240,146,WHITE);//清除显示	     
 		delay_ms(200);				  
-	}										   
+	}	
+									   
   	mp3fileinfo.lfsize=_MAX_LFN*2+1;						//长文件名最大长度
 	mp3fileinfo.lfname=mymalloc(SRAMIN,mp3fileinfo.lfsize);	//为长文件缓存区分配内存
  	pname=mymalloc(SRAMIN,mp3fileinfo.lfsize);				//为带路径的文件名分配内存
  	mp3indextbl=mymalloc(SRAMIN,2*totmp3num);				//申请2*totmp3num个字节的内存,用于存放音乐文件索引
  	while(mp3fileinfo.lfname==NULL||pname==NULL||mp3indextbl==NULL)//内存分配出错
  	{	    
-		//Show_Str(60,190,240,16,"内存分配失败!",16,0);
+		Show_Str(60,190,240,16,"内存分配失败!",16,0);
 		delay_ms(200);				  
 		LCD_Fill(60,190,240,146,WHITE);//清除显示	     
 		delay_ms(200);				  
@@ -157,7 +157,9 @@ void mp3_play(void)
 	//记录索引
     res=f_opendir(&mp3dir,"0:/MUSIC"); //打开目录
 	if(res==FR_OK)
-	{
+	{		
+	  printf("RUNING HEAR11111111111111111!\r\n"); 
+
 		curindex=0;//当前索引为0
 		while(1)//全部查询一遍
 		{
@@ -176,15 +178,16 @@ void mp3_play(void)
    	curindex=0;											//从0开始显示
    	res=f_opendir(&mp3dir,(const TCHAR*)"0:/MUSIC"); 	//打开目录
 	while(res==FR_OK)//打开成功
-	{	
-		//dir_sdi(&mp3dir,mp3indextbl[curindex]);			//改变当前目录索引	   
+	{			printf("RUNING HEAR22222222222222!\r\n"); 
+
+		    dir_sdi(&mp3dir,mp3indextbl[curindex]);			//改变当前目录索引	   
         res=f_readdir(&mp3dir,&mp3fileinfo);       		//读取目录下的一个文件
         if(res!=FR_OK||mp3fileinfo.fname[0]==0)break;	//错误了/到末尾了,退出
      	fn=(u8*)(*mp3fileinfo.lfname?mp3fileinfo.lfname:mp3fileinfo.fname);			 
 		strcpy((char*)pname,"0:/MUSIC/");				//复制路径(目录)
 		strcat((char*)pname,(const char*)fn);  			//将文件名接在后面
  		LCD_Fill(60,190,240,190+16,WHITE);				//清除之前的显示
-		//Show_Str(60,190,240-60,16,fn,16,0);				//显示歌曲名字 
+		Show_Str(60,190,240-60,16,fn,16,0);				//显示歌曲名字 
 		mp3_index_show(curindex+1,totmp3num);
 		key=mp3_play_song(pname); 				 		//播放这个MP3    
 		if(key==2)		//上一曲
@@ -221,11 +224,12 @@ u8 mp3_play_song(u8 *pname)
 	databuf=(u8*)mymalloc(SRAMIN,4096);		//开辟4096字节的内存区域
 	if(databuf==NULL||fmp3==NULL)rval=0XFF ;//内存申请失败.
 	if(rval==0)
-	{	  
+	{		printf("RUNING HEAR3333333333333333!\r\n"); 
+  
 	  	VS_Restart_Play();  					//重启播放 
 		VS_Set_All();        					//设置音量等信息 			 
 		VS_Reset_DecodeTime();					//复位解码时间 	  
-		//res=f_typetell(pname);	 	 			//得到文件后缀	 			  	 						 
+		res=f_typetell(pname);	 	 			//得到文件后缀	 			  	 						 
 		if(res==0x4c)//如果是flac,加载patch
 		{	
 			VS_Load_Patch((u16*)vs1053b_patch,VS1053B_PATCHLEN);
@@ -245,7 +249,7 @@ u8 mp3_play_song(u8 *pname)
 						i+=32;
 					}else   
 					{
-						key=1;
+						key=0;
 						switch(key)
 						{
 							case 1:

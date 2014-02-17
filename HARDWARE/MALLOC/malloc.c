@@ -1,4 +1,4 @@
-#include "malloc.h"
+#include "malloc.h"	    
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
 //ALIENTEK战舰STM32开发板
@@ -86,7 +86,6 @@ u32 mem_malloc(u8 memx,u32 size)
     u32 i;  
     if(!mallco_dev.memrdy[memx])mallco_dev.init(memx);//未初始化,先执行初始化 
     if(size==0)return 0XFFFFFFFF;//不需要分配
-
     nmemb=size/memblksize[memx];  	//获取需要分配的连续内存块数
     if(size%memblksize[memx])nmemb++;  
     for(offset=memtblsize[memx]-1;offset>=0;offset--)//搜索整个内存控制区  
@@ -164,7 +163,7 @@ void *myrealloc(u8 memx,void *ptr,u32 size)
         myfree(memx,ptr);  											  		//释放旧内存
         return (void*)((u32)mallco_dev.membase[memx]+offset);  				//返回新内存首地址
     }  
-} 
+}
 
 
 

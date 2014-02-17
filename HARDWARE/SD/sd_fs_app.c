@@ -1,14 +1,5 @@
-/******************** (C) COPYRIGHT 2011 野火嵌入式开发工作室 ********************
- * 文件名  ：sd_fs_app.c
+/*********************************************************************************
  * 描述    ：MicroSD卡文件系统应用函数库。
- *              
- * 实验平台：野火STM32开发板
- * 硬件连接：无
- *
- * 库版本  ：ST3.0.0
- *
- * 作者    ：fire  QQ: 313303034 
- * 博客    ：firestm32.blog.chinaunix.net
 **********************************************************************************/
 #include "sd_fs_app.h"
 //#include "exti.h"
@@ -23,21 +14,17 @@ BYTE mybuffer[512];            // file copy buffer
 BYTE my_latest_buffer[512];
 uint8_t mystring[512]="this is a MicroSD demo base on fatfs";
 UINT mybr, mybw;               // File R/W count
-int mya = 0;
+int  mya = 0;
 char mypath[512]="0:";         // 一定要初始化为0:
 
 /*
  * 函数名：NVIC_Configuration
  * 描述  ：SDIO 中断通道配置
- * 输入  ：无
- * 输出  ：无
  */
 void SDIO_NVIC_Configuration(void)
 {
-    NVIC_InitTypeDef NVIC_InitStructure;
-    
-    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
-    
+    NVIC_InitTypeDef NVIC_InitStructure;    
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);    
     NVIC_InitStructure.NVIC_IRQChannel = SDIO_IRQn;
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
     NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;
@@ -49,8 +36,7 @@ void SDIO_NVIC_Configuration(void)
 void sd_fs_init(void)
 {
     /* SD卡中断初始化 */
-		SDIO_NVIC_Configuration();
-		
+		SDIO_NVIC_Configuration();		
 		/* SD 卡硬件初始化，初始化盘符为0 */	 
     disk_initialize( 0 );	         
 }
@@ -90,14 +76,12 @@ void Sd_fs_test(void)
         if (myres || mybr == 0) break;   // error or eof        	    	
     }    
     f_close(&myfsrc);	 /* 关闭打开的文件 */
-    
-//    Set_direction(0);		 
 }
 
 
 /*******************************************************************************
 * Function Name  : Sdfs_new
-* Description    : 兴建一个文件并写入数据  
+* Description    : 建一个文件并写入数据  
 * Input          : new_file_name--兴建文件的名称  
 *				   write_buffer--写入文件的数据缓冲区地址  
 *				   buffer_size--缓冲区大小
