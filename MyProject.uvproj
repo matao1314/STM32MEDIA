@@ -345,7 +345,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER, STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CMSIS\startup;.\CMSIS;.\FWLIB\inc;.\HARDWARE;.\USER;.\SYSTEM\delay;.\SYSTEM\sys;.\SYSTEM\usart;.\HARDWARE\LCD;.\HARDWARE\SPI;.\HARDWARE\SD;.\HARDWARE\FLASH;.\HARDWARE\MALLOC;.\HARDWARE\LED;.\HARDWARE\VS10XX;.\HARDWARE\TEXT;.\FATFS\exfuns;.\FATFS\src;.\APPLICATIONS\mp3palyer</IncludePath>
+              <IncludePath>.\CMSIS\startup;.\CMSIS;.\FWLIB\inc;.\HARDWARE;.\USER;.\SYSTEM\delay;.\SYSTEM\sys;.\SYSTEM\usart;.\HARDWARE\LCD;.\HARDWARE\SPI;.\HARDWARE\SD;.\HARDWARE\FLASH;.\HARDWARE\MALLOC;.\HARDWARE\LED;.\HARDWARE\VS10XX;.\HARDWARE\TEXT;.\FATFS\exfuns;.\FATFS\src;.\APPLICATIONS\mp3palyer;.\GUI;.\PICDECODE;.\HARDWARE\TOUCH</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -610,6 +610,11 @@
               <FileType>1</FileType>
               <FilePath>.\HARDWARE\TEXT\fontupd.c</FilePath>
             </File>
+            <File>
+              <FileName>touch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\TOUCH\touch.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -659,6 +664,81 @@
               <FileName>DOC.txt</FileName>
               <FileType>5</FileType>
               <FilePath>.\DOC.txt</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>PICDECODE</GroupName>
+          <Files>
+            <File>
+              <FileName>bmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\PICDECODE\bmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>gif.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\PICDECODE\gif.c</FilePath>
+            </File>
+            <File>
+              <FileName>jpeg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\PICDECODE\jpeg.c</FilePath>
+            </File>
+            <File>
+              <FileName>piclib.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\PICDECODE\piclib.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>GUI</GroupName>
+          <Files>
+            <File>
+              <FileName>button.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\GUI\button.c</FilePath>
+            </File>
+            <File>
+              <FileName>edit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\GUI\edit.c</FilePath>
+            </File>
+            <File>
+              <FileName>filelistbox.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\GUI\filelistbox.c</FilePath>
+            </File>
+            <File>
+              <FileName>gui.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\GUI\gui.c</FilePath>
+            </File>
+            <File>
+              <FileName>listbox.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\GUI\listbox.c</FilePath>
+            </File>
+            <File>
+              <FileName>memo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\GUI\memo.c</FilePath>
+            </File>
+            <File>
+              <FileName>progressbar.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\GUI\progressbar.c</FilePath>
+            </File>
+            <File>
+              <FileName>scrollbar.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\GUI\scrollbar.c</FilePath>
+            </File>
+            <File>
+              <FileName>window.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\GUI\window.c</FilePath>
             </File>
           </Files>
         </Group>

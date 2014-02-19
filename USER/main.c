@@ -16,7 +16,7 @@
 #include "malloc.h"	    
 
 #include "mp3player.h"
-
+u16  OSTime;	//fix error
 SD_CardInfo   SDCardInfo;    // 存放SD卡的信息
 SD_Error SD_USER_Init(void);//SD卡初始化
 void TEST(void);
