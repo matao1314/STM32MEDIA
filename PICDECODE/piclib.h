@@ -20,7 +20,7 @@
 //Copyright(C) 广州市星翼电子科技有限公司 2009-2019
 //All rights reserved									  
 //////////////////////////////////////////////////////////////////////////////////
-typedef enum {FALSE = 0, TRUE = !FALSE} bool;
+//typedef enum {FALSE = 0, TRUE = !FALSE} bool;
 
 #define PIC_FORMAT_ERR		0x27	//格式错误
 #define PIC_SIZE_ERR		0x28	//图片尺寸错误

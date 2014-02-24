@@ -1110,7 +1110,7 @@ SD_Error SD_ReadMultiBlocks(uint32_t addr, uint32_t *readbuff, uint16_t BlockSiz
       DMA_RxConfiguration(readbuff, (NumberOfBlocks * BlockSize));
       while (DMA_GetFlagStatus(DMA2_FLAG_TC4) == RESET)
       {}
-      while ((TransferEnd == 0) && (TransferError == SD_OK))
+      while ((TransferEnd == 0) && (TransferError == SD_OK))//why?
       {}
       if (TransferError != SD_OK)
       {

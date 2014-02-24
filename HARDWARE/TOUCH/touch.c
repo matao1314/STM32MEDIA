@@ -1,29 +1,11 @@
-#include "sys.h"
 #include "touch.h" 
 #include "lcd.h"
 #include "delay.h"
 #include "stdlib.h"
 #include "math.h"
-#include "text.h"
-#include "gui.h"
-
-
+#include "i2cee.h"
 #include "spi.h"
-#include "flash.h" 
    
-//////////////////////////////////////////////////////////////////////////////////	 
-//本程序只供学习使用，未经作者许可，不得用于其它任何用途
-//ALIENTEK战舰STM32开发板
-//触摸屏驱动（支持ADS7843/7846/UH7843/7846/XPT2046/TSC2046等） 代码	   
-//正点原子@ALIENTEK
-//技术论坛:www.openedv.com
-//修改日期:2012/9/11
-//版本：V1.0
-//版权所有，盗版必究。
-//Copyright(C) 广州市星翼电子科技有限公司 2009-2019
-//All rights reserved									  
-//////////////////////////////////////////////////////////////////////////////////
-
 _m_tp_dev tp_dev=
 {
 	TP_Init,
@@ -59,7 +41,7 @@ mystruct   mynewstruct;
 //num:要写入的数据
 void TP_Write_Byte(u8 num)    
 {
-  SPI2_ReadWriteByte(num);  
+  SPI1_ReadWriteByte(num);  
 } 		 
 //SPI读数据 
 //从触摸屏IC读取adc值
@@ -71,9 +53,9 @@ u16 TP_Read_AD(u8 CMD)
 		TCS=0; 
 		TP_Write_Byte(CMD);//发送命令字
    	delay_us(6);//ADS7846的转换时间最长为6us
-    temp= SPI2_ReadWriteByte(0xFF); 
+    temp= SPI1_ReadWriteByte(0xFF); 
     buf=temp<<8; 
-    temp=SPI2_ReadWriteByte(0xFF);
+    temp=SPI1_ReadWriteByte(0xFF);
     buf |= temp; 
 		buf>>=4;
 		TCS=1;//释放片选	 
@@ -110,6 +92,7 @@ u16 TP_Read_XOY(u8 xy)
 	temp=sum/(READ_TIMES-2*LOST_VAL);
 	return temp;   
 } 
+
 //读取x,y坐标
 //最小值不能少于100.
 //x,y:读取到的坐标值
@@ -124,6 +107,7 @@ u8 TP_Read_XY(u16 *x,u16 *y)
 	*y=ytemp;
 	return 1;//读数成功
 }
+
 //连续2次读取触摸屏IC,且这两次的偏差不能超过
 //ERR_RANGE,满足条件,则认为读数正确,否则读数错误.	   
 //该函数能大大提高准确度
@@ -172,7 +156,7 @@ void TP_Draw_Big_Point(u16 x,u16 y,u16 color)
 	POINT_COLOR=color;
 	LCD_DrawPoint(x,y);//中心点 
 	LCD_DrawPoint(x+1,y);
-	LCD_DrawPoint(x,y+1);							
+	LCD_DrawPoint(x,y+1);
 	LCD_DrawPoint(x+1,y+1);	 	  	
 }						  
 //////////////////////////////////////////////////////////////////////////////////		  
@@ -220,25 +204,17 @@ void TP_Save_Adjdata(void)
 	s32 temp;			 
 	//保存校正结果!		   							  
 	temp=tp_dev.xfac*100000000;//保存x校正因素      
-//    AT24CXX_WriteLenByte(SAVE_ADDR_BASE,temp,4);
-  mynewstruct.xfac=temp; 
+    //AT24CXX_WriteLenByte(SAVE_ADDR_BASE,temp,4);   
 	temp=tp_dev.yfac*100000000;//保存y校正因素    
-//    AT24CXX_WriteLenByte(SAVE_ADDR_BASE+4,temp,4);
-  mynewstruct.yfac=temp;
+    //AT24CXX_WriteLenByte(SAVE_ADDR_BASE+4,temp,4);
 	//保存x偏移量
-//    AT24CXX_WriteLenByte(SAVE_ADDR_BASE+8,tp_dev.xoff,2);
-  mynewstruct.xoff=tp_dev.xoff;
+    //AT24CXX_WriteLenByte(SAVE_ADDR_BASE+8,tp_dev.xoff,2);		    
 	//保存y偏移量
-//	AT24CXX_WriteLenByte(SAVE_ADDR_BASE+10,tp_dev.yoff,2);
-  mynewstruct.yoff=tp_dev.yoff;
+	//AT24CXX_WriteLenByte(SAVE_ADDR_BASE+10,tp_dev.yoff,2);	
 	//保存触屏类型
-//	AT24CXX_WriteOneByte(SAVE_ADDR_BASE+12,tp_dev.touchtype);	
-  mynewstruct.touchtype=tp_dev.touchtype;
-	mynewstruct.fac=0X0A;//标记校准过了
+	//AT24CXX_WriteOneByte(SAVE_ADDR_BASE+12,tp_dev.touchtype);	
+	temp=0X0A;//标记校准过了
 //	AT24CXX_WriteOneByte(SAVE_ADDR_BASE+13,temp); 
-  //  SPI_Flash_Write((u8*)&mynewstruct,SAVE_ADDR_BASE,sizeof(mynewstruct)); //此处有问题 
-//		SPI_Flash_Read((u8*)&mynewstruct,SAVE_ADDR_BASE,sizeof(mynewstruct));
-
 }
 //得到保存在EEPROM里面的校准值
 //返回值：1，成功获取数据
@@ -246,25 +222,18 @@ void TP_Save_Adjdata(void)
 u8 TP_Get_Adjdata(void)
 {					  
 	s32 tempfac;
-//	tempfac=AT24CXX_ReadOneByte(SAVE_ADDR_BASE+13);//读取标记字,看是否校准过！ 	
-//	SPI_Flash_Read((u8*)&mynewstruct,SAVE_ADDR_BASE,sizeof(mynewstruct));
-	tempfac=mynewstruct.fac;
+//	tempfac=AT24CXX_ReadOneByte(SAVE_ADDR_BASE+13);//读取标记字,看是否校准过！ 		 
 	if(tempfac==0X0A)//触摸屏已经校准过了			   
 	{    												 
-//		tempfac=AT24CXX_ReadLenByte(SAVE_ADDR_BASE,4);
-    tempfac=mynewstruct.xfac;
+	//	tempfac=AT24CXX_ReadLenByte(SAVE_ADDR_BASE,4);		   
 		tp_dev.xfac=(float)tempfac/100000000;//得到x校准参数
-//		tempfac=AT24CXX_ReadLenByte(SAVE_ADDR_BASE+4,4);
-    tempfac=mynewstruct.yfac;
+	//	tempfac=AT24CXX_ReadLenByte(SAVE_ADDR_BASE+4,4);			          
 		tp_dev.yfac=(float)tempfac/100000000;//得到y校准参数
 	    //得到x偏移量
-//		tp_dev.xoff=AT24CXX_ReadLenByte(SAVE_ADDR_BASE+8,2);
-    tp_dev.xoff=mynewstruct.xoff;
+//		tp_dev.xoff=AT24CXX_ReadLenByte(SAVE_ADDR_BASE+8,2);			   	  
  	    //得到y偏移量
-//		tp_dev.yoff=AT24CXX_ReadLenByte(SAVE_ADDR_BASE+10,2);	
-    tp_dev.yoff=mynewstruct.yoff;
-//		tp_dev.touchtype=AT24CXX_ReadOneByte(SAVE_ADDR_BASE+12);//读取触屏类型标记
-    tp_dev.touchtype=mynewstruct.touchtype;
+//		tp_dev.yoff=AT24CXX_ReadLenByte(SAVE_ADDR_BASE+10,2);				 	  
+ //		tp_dev.touchtype=AT24CXX_ReadOneByte(SAVE_ADDR_BASE+12);//读取触屏类型标记
 		if(tp_dev.touchtype)//X,Y方向与屏幕相反
 		{
 			CMD_RDX=0X90;
@@ -279,11 +248,8 @@ u8 TP_Get_Adjdata(void)
 	return 0;
 }	 
 //提示字符串
-//提醒 列表
-const u8* TP_REMIND_MSG_TBL[1]=
-{
-"Please use the stylus click the cross on the screen.The cross will always move until the screen adjustment is completed.",
-}; 					  
+const u8* TP_REMIND_MSG_TBL="Please use the stylus click the cross on the screen.The cross will always move until the screen adjustment is completed.";
+ 					  
 //提示校准结果(各个参数)
 void TP_Adj_Info_Show(u16 x0,u16 y0,u16 x1,u16 y1,u16 x2,u16 y2,u16 x3,u16 y3,u16 fac)
 {	  
@@ -308,8 +274,7 @@ void TP_Adj_Info_Show(u16 x0,u16 y0,u16 x1,u16 y1,u16 x2,u16 y2,u16 x3,u16 y3,u1
  	LCD_ShowNum(40+56,lcddev.width,fac,3,16); 	//显示数值,该数值必须在95~105范围之内.
 
 }
-
-//extern volatile u8 system_task_return;		//任务强制返回标志.
+		 
 //触摸屏校准代码
 //得到四个校准参数
 void TP_Adjust(void)
@@ -327,7 +292,7 @@ void TP_Adjust(void)
 	POINT_COLOR=RED;//红色 
 	LCD_Clear(WHITE);//清屏 	   
 	POINT_COLOR=BLACK;
-	Show_Str(40,40,160,100,(u8*)TP_REMIND_MSG_TBL[gui_phy.language],16,1);//显示提示信息
+	LCD_ShowString(40,40,160,100,16,(u8*)TP_REMIND_MSG_TBL);//显示提示信息
 	TP_Drow_Touch_Point(20,20,RED);//画点1 
 	tp_dev.sta=0;//消除触发信号 
 	tp_dev.xfac=0;//xfac用来标记是否校准过,所以校准之前必须清掉!以免错误	 
@@ -455,44 +420,44 @@ void TP_Adjust(void)
 		}
 		delay_ms(10);
 		outtime++;
-		if(outtime>1000)//||system_task_return
+		if(outtime>1000)
 		{
 			TP_Get_Adjdata();
-			//system_task_return=0;
 			break;
 	 	} 
  	}
-}	
+}		  
 //触摸屏初始化  		    
 //返回值:0,没有进行校准
 //       1,进行过校准
 u8 TP_Init(void)
-{		
+{			    		   
 	//注意,时钟使能之后,对GPIO的操作才有效
 	//所以上拉之前,必须使能时钟.才能实现真正的上拉输出
-    GPIO_InitTypeDef GPIO_InitStructure;
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOC, ENABLE);  
-    /* 2046CS --PA4 */
-    GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_4;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;// 复用推挽输出		 
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;								
-    GPIO_Init(GPIOA, &GPIO_InitStructure);									     
-    /* 2046 INT_IRQ --PC6*/
-    GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_6 ;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD ;
-    GPIO_Init(GPIOC, &GPIO_InitStructure);
-		SPI2_Init();		   	//初始化SPI
+  GPIO_InitTypeDef GPIO_InitStructure;
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);  
+  /* 2046CS --PA4 */
+  GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_4;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;// 复用推挽输出		 
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;								
+  GPIO_Init(GPIOC, &GPIO_InitStructure);									     
+  /* 2046 INT_IRQ --PC6*/
+  GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_1 ;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD ;
+  GPIO_Init(GPIOC, &GPIO_InitStructure);
 
-  	TP_Read_XY(&tp_dev.x,&tp_dev.y);//第一次读取初始化	 
-	//if(TP_Get_Adjdata())return 0;//已经校准
-	//else			   //未校准?
+  GPIO_SetBits(GPIOC, GPIO_Pin_2|GPIO_Pin_3 );//Off all led		 	 
+ 
+	TP_Read_XY(&tp_dev.x,&tp_dev.y);//第一次读取初始化	 
+ //	AT24CXX_Init();//初始化24CXX
+	if(TP_Get_Adjdata())return 0;//已经校准
+	else			   //未校准?
 	{ 										    
 		LCD_Clear(WHITE);//清屏
 	  TP_Adjust();  //屏幕校准 
-
-		//TP_Save_Adjdata();	 
+		TP_Save_Adjdata();	 
 	}			
-	//TP_Get_Adjdata();	
+	TP_Get_Adjdata();	
 	return 1; 									 
 }
 

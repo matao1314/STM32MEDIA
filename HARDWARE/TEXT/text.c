@@ -59,9 +59,9 @@ void Show_Font(u16 x,u16 y,u8 *font,u8 size,u8 mode)
 	    for(t=0;t<size*2;t++)
 	    {   												   
 		    temp=dzk[t];//得到12数据                          
-	        for(t1=0;t1<8;t1++)
+	    for(t1=0;t1<8;t1++)
 			{
-				if(temp&0x80)LCD_DrawPoint(x,y);
+				if(temp&0x80) LCD_DrawPoint(x,y);
 	 			else 
 				{
 					tempcolor=POINT_COLOR;
@@ -161,7 +161,7 @@ void Show_Str_Mid(u16 x,u16 y,u8*str,u8 size,u8 len)
 	else
 	{
 		strlenth=(len-strlenth)/2;
-	    Show_Str(strlenth+x,y,240,320,str,size,1);
+	  Show_Str(strlenth+x,y,240,320,str,size,1);
 	}
 }   
 

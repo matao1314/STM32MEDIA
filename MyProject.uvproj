@@ -345,7 +345,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER, STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CMSIS\startup;.\CMSIS;.\FWLIB\inc;.\HARDWARE;.\USER;.\SYSTEM\delay;.\SYSTEM\sys;.\SYSTEM\usart;.\HARDWARE\LCD;.\HARDWARE\SPI;.\HARDWARE\SD;.\HARDWARE\FLASH;.\HARDWARE\MALLOC;.\HARDWARE\LED;.\HARDWARE\VS10XX;.\HARDWARE\TEXT;.\FATFS\exfuns;.\FATFS\src;.\APPLICATIONS\mp3palyer;.\GUI;.\PICDECODE;.\HARDWARE\TOUCH</IncludePath>
+              <IncludePath>.\CMSIS\startup;.\CMSIS;.\FWLIB\inc;.\HARDWARE;.\USER;.\SYSTEM\delay;.\SYSTEM\sys;.\SYSTEM\usart;.\HARDWARE\LCD;.\HARDWARE\SPI;.\HARDWARE\SD;.\HARDWARE\FLASH;.\HARDWARE\MALLOC;.\HARDWARE\LED;.\HARDWARE\VS10XX;.\HARDWARE\TEXT;.\FATFS\exfuns;.\FATFS\src;.\APPLICATIONS\mp3palyer;.\GUI;.\PICDECODE;.\HARDWARE\TOUCH;.\HARDWARE\MYUI;.\HARDWARE\24CXX</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -615,6 +615,16 @@
               <FileType>1</FileType>
               <FilePath>.\HARDWARE\TOUCH\touch.c</FilePath>
             </File>
+            <File>
+              <FileName>myui.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\MYUI\myui.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2cee.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\24CXX\i2cee.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -741,6 +751,15 @@
               <FilePath>.\GUI\window.c</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>uCOS-III/CPU</GroupName>
+        </Group>
+        <Group>
+          <GroupName>uCOS-III/LIB</GroupName>
+        </Group>
+        <Group>
+          <GroupName>uCOS-III/Source</GroupName>
         </Group>
       </Groups>
     </Target>

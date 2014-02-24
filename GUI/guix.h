@@ -27,7 +27,9 @@
     
 //用到ucos的滴答时钟
 typedef unsigned int   INT32U;	 
-extern volatile  INT32U  OSTime;
+//extern volatile  INT32U  OSTime;
+#define  OSTime  100
+
 //gui时间计数器,需要在外部实现
 //gui定时器,每10ms增加1次
 #define GUI_TIMER_10MS	OSTime/2 	//ucos的调度时间设置为5ms 

@@ -3,6 +3,8 @@
 #include "flash.h"   
 #include "lcd.h"  
 #include "malloc.h"
+#include "usart.h"	 
+
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
 //ALIENTEK战舰STM32开发板
@@ -16,7 +18,7 @@
 //All rights reserved									  
 //////////////////////////////////////////////////////////////////////////////////
 						   
-u32 FONTINFOADDR=(1024*6+500)*1024;//默认是6M的地址
+u32 FONTINFOADDR=100000;//(1024*2+500)*1024;//默认是6M的地址
 //字库信息结构体. 
 //用来保存字库基本信息，地址，大小等
 _font_info ftinfo;
@@ -67,7 +69,7 @@ u8 updata_fontx(u16 x,u16 y,u8 size,u8 *fxpath,u8 fx)
 	u8 rval=0;	     
 	fftemp=(FIL*)mymalloc(SRAMIN,sizeof(FIL));	//分配内存	
 	if(fftemp==NULL)rval=1;
-	tempbuf=mymalloc(SRAMIN,4096);	//分配4096个字节空间
+	tempbuf=mymalloc(SRAMIN,512);	//分配4096个字节空间
 	if(tempbuf==NULL)rval=1;
  	res=f_open(fftemp,(const TCHAR*)fxpath,FA_READ); 
  	if(res)rval=2;//打开文件失败  
@@ -91,12 +93,12 @@ u8 updata_fontx(u16 x,u16 y,u8 size,u8 *fxpath,u8 fx)
 		}	   
 		while(res==FR_OK)//死循环执行
 		{
-	 		res=f_read(fftemp,tempbuf,4096,(UINT *)&bread);		//读取数据	 
+	 		res=f_read(fftemp,tempbuf,512,(UINT *)&bread);		//读取数据	 
 			if(res!=FR_OK)break;								//执行错误
-			SPI_Flash_Write(tempbuf,offx+flashaddr,4096);		//从0开始写入4096个数据  
+			SPI_Flash_Write(tempbuf,offx+flashaddr,512);		//从0开始写入4096个数据  
 	  		offx+=bread;	  
 			fupd_prog(x,y,size,fftemp->fsize,offx);	 			//进度显示
-			if(bread!=4096)break;								//读完了.
+			if(bread!=512)break;								//读完了.
 	 	} 	
 		f_close(fftemp);		
 	}			 
@@ -132,7 +134,7 @@ u8 update_font(u16 x,u16 y,u8 size,u8 src)
 	}   
  	res=0XFF;		
 	ftinfo.fontok=0XFF;
-  	SPI_Flash_Write((u8*)&ftinfo,FONTINFOADDR,sizeof(ftinfo));	//清除之前字库成功的标志.防止更新到一半重启,导致的字库部分数据丢失.
+  SPI_Flash_Write((u8*)&ftinfo,FONTINFOADDR,sizeof(ftinfo));	//清除之前字库成功的标志.防止更新到一半重启,导致的字库部分数据丢失.
  	SPI_Flash_Read((u8*)&ftinfo,FONTINFOADDR,sizeof(ftinfo));	//重新读出ftinfo结构体数据
  	LCD_ShowString(x,y,240,320,size,"Updating UNIGBK.BIN");		
 	res=updata_fontx(x+20*size/2,y,size,unigbk_path,0);			//更新UNIGBK.BIN
@@ -154,38 +156,16 @@ u8 update_font(u16 x,u16 y,u8 size,u8 src)
 u8 font_init(void)
 {			  												 
 	SPI_Flash_Init();
-	FONTINFOADDR=(1024*6+500)*1024;			//W25Q64,6M以后	 
+	FONTINFOADDR=100000;			//W25Q64,6M以后	 
 	ftinfo.ugbkaddr=FONTINFOADDR+25;		//UNICODEGBK 表存放首地址固定地址
 	SPI_Flash_Read((u8*)&ftinfo,FONTINFOADDR,sizeof(ftinfo));//读出ftinfo结构体数据
+	printf("unigbk的地址:%x\n",ftinfo.ugbkaddr);
+	printf("unigbk的大小:%d\n",ftinfo.ugbksize);
+	printf("gbk12地址	:%x\n",ftinfo.f12addr);
+	printf("gbk12的大小:%d\n",ftinfo.gbk12size);
+	printf("gbk16地址:%x\n",ftinfo.f16addr);
+	printf("gbk16的大小:%d\n",ftinfo.gkb16size);
+
 	if(ftinfo.fontok!=0XAA)return 1;		//字库错误. 
 	return 0;		    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

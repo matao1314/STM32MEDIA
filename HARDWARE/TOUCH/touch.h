@@ -44,8 +44,8 @@ typedef struct
 extern _m_tp_dev tp_dev;	 	//触屏控制器在touch.c里面定义
 
 //与触摸屏芯片连接引脚	   
-#define PEN  	PCin(6)  	//PC6 INT
-#define TCS  	PAout(4)  //PB2  CS  
+#define PEN  	PCin(1)  	//INT
+#define TCS  	PCout(4)  //CS  
 
 void TP_Write_Byte(u8 num);						//向控制芯片写入一个数据
 u16 TP_Read_AD(u8 CMD);							//读取AD转换值

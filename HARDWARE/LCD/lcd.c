@@ -89,7 +89,7 @@ u16 LCD_ReadPoint(u16 x,u16 y)
 	if(LCD_DAT)  r=0;	//dummy Read	   
 	delay_us(2);	  
  	r=LCD_DAT;  		  		//实际坐标颜色  
- return LCD_BGR2RGB(r);	//其他IC
+  return LCD_BGR2RGB(r);	//其他IC
 }			 
 //LCD开启显示
 void LCD_DisplayOn(void)
@@ -106,10 +106,8 @@ void LCD_DisplayOff(void)
 //Ypos:纵坐标
 void LCD_SetCursor(u16 Xpos, u16 Ypos)
 {	 
-LCD_WriteReg(0x004E, Xpos);
-LCD_WriteReg(0X004F, Ypos);
-//LCD_WriteReg(0x004E, Ypos);
-//LCD_WriteReg(0X004F, Xpos);
+	LCD_WriteReg(0x004E, Xpos);
+	LCD_WriteReg(0X004F, Ypos);
 } 		 
 //设置LCD的自动扫描方向
 //注意:其他函数可能会受到此函数设置的影响(尤其是9341/6804这两个奇葩),

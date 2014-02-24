@@ -3,65 +3,45 @@
 #include "sys.h" 
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
-//ALIENTEK战舰STM32开发板
-//W25Q64 代码	   
-//正点原子@ALIENTEK
-//技术论坛:www.openedv.com
-//修改日期:2012/9/9
-//版本：V1.0
-//版权所有，盗版必究。
-//Copyright(C) 广州市星翼电子科技有限公司 2009-2019
-//All rights reserved									  
-//////////////////////////////////////////////////////////////////////////////////
-	  
-//W25X系列/Q系列芯片列表	   
-//W25Q80 ID  0XEF13
-//W25Q16 ID  0XEF14
-//W25Q32 ID  0XEF15
-//W25Q32 ID  0XEF16	
-#define W25Q80 	0XEF13 	
-#define W25Q16 	0XEF14
-#define W25Q32 	0XEF15
-#define W25Q64 	0XEF16
-
+//Mini STM32开发板
+//AT45DB 驱动函数	   
+//修改日期:2011年11月13日21:38:42
+///////////////////////////////////////////////////////////	  
+#define	SPI_FLASH_CS     PCout(2)  //选中FLASH					 
+///////////////////////////////////////////////////////////
 extern u16 SPI_FLASH_TYPE;//定义我们使用的flash芯片型号
 
-#define	SPI_FLASH_CS PBout(12)  //选中FLASH	
-				 
-////////////////////////////////////////////////////////////////////////////
- 
+//AT45DB读写
+#define FLASH_ID       0X1F26//ID
+#define Dummy_Byte     0xA5	 //虚读
 //指令表
-#define W25X_WriteEnable		0x06 
-#define W25X_WriteDisable		0x04 
-#define W25X_ReadStatusReg		0x05 
-#define W25X_WriteStatusReg		0x01 
-#define W25X_ReadData			0x03 
-#define W25X_FastReadData		0x0B 
-#define W25X_FastReadDual		0x3B 
-#define W25X_PageProgram		0x02 
-#define W25X_BlockErase			0xD8 
-#define W25X_SectorErase		0x20 
-#define W25X_ChipErase			0xC7 
-#define W25X_PowerDown			0xB9 
-#define W25X_ReleasePowerDown	0xAB 
-#define W25X_DeviceID			0xAB 
-#define W25X_ManufactDeviceID	0x90 
-#define W25X_JedecDeviceID		0x9F 
-
-void SPI_Flash_Init(void);
+#define SPI_FLASH_PageSize            528	//每页528个字节
+#define SPI_FLASH_PageNum             4096//每扇区
+///////////////////////////////////////////////////////////
+#define BUFFER_1_WRITE                0x84// 写入第一缓冲区
+#define BUFFER_2_WRITE                0x87// 写入第二缓冲区
+#define BUFFER_1_READ                 0xD4// 读取第一缓冲区
+#define BUFFER_2_READ                 0xD6// 读取第二缓冲区
+#define B1_TO_MM_PAGE_PROG_WITH_ERASE 0x83// 将第一缓冲区的数据写入主存储器（擦除模式）
+#define B2_TO_MM_PAGE_PROG_WITH_ERASE 0x86// 将第二缓冲区的数据写入主存储器（擦除模式）
+#define MM_PAGE_TO_B1_XFER            0x53// 将主存储器的指定页数据加载到第一缓冲区
+#define MM_PAGE_TO_B2_XFER            0x55// 将主存储器的指定页数据加载到第二缓冲区
+#define PAGE_ERASE                    0x81// 页擦除  （每页512/528字节）
+#define SECTOR_ERASE                  0x7C// 扇区擦除（每扇区128K字节）
+#define READ_STATE_REGISTER           0xD7// 读取状态寄存器
+/////////////////////////////////////////////////////////////
+/*----- High layer function -----*/
+void SPI_Flash_Write(u8 *pBuffer, u32 WriteAddr, u16 NumByteToWrite);//读取flash
+void SPI_Flash_Read (u8 *pBuffer, u32 ReadAddr,  u16 NumByteToRead); //读取flash
+/////////////////////////////////////////////////////////////////////////
+void DF_mm_to_buf(u8 buffer,unsigned int page);//将指定主存储器页的数据转入指定缓冲区
+void DF_buf_to_mm(u8 buffer,u16 page);//将指定缓冲区中的数据写入主存储区的指定页
+void DF_page_earse(u16 page);       //擦除指定的主存储器页（地址范围0-4095）
+/*----- Low layer function -----*/
+u8	 SPI_Flash_ReadSR(void);        //读取状态寄存器
 u16  SPI_Flash_ReadID(void);  	    //读取FLASH ID
-u8	 SPI_Flash_ReadSR(void);        //读取状态寄存器 
-void SPI_FLASH_Write_SR(u8 sr);  	//写状态寄存器
-void SPI_FLASH_Write_Enable(void);  //写使能 
-void SPI_FLASH_Write_Disable(void);	//写保护
-void SPI_Flash_Write_NoCheck(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite);
-void SPI_Flash_Read(u8* pBuffer,u32 ReadAddr,u16 NumByteToRead);   //读取flash
-void SPI_Flash_Write(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite);//写入flash
-void SPI_Flash_Erase_Chip(void);    	  //整片擦除
-void SPI_Flash_Erase_Sector(u32 Dst_Addr);//扇区擦除
-void SPI_Flash_Wait_Busy(void);           //等待空闲
-void SPI_Flash_PowerDown(void);           //进入掉电模式
-void SPI_Flash_WAKEUP(void);			  //唤醒
+void SPI_Flash_Init(void);					//SPI初始化
+void SPI_Flash_Wait_Busy(void);     //等待空闲
 #endif
 
 
