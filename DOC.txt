@@ -1,3 +1,4 @@
+NOTES:STM32 IIC BUG.  IIC1 and FSMC cannot use at the same time¡£Hardware designe will note
 //--------------------------------------------------------------------------
 CPU£ºSTM32F103VET6
 POWER:3.3
