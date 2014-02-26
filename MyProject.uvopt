@@ -316,10 +316,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>18</ColumnNumber>
+      <ColumnNumber>77</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>188</TopLine>
-      <CurrentLine>188</CurrentLine>
+      <TopLine>125</TopLine>
+      <CurrentLine>131</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\USER\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -680,10 +680,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>14</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>4</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\HARDWARE\SPI\spi.c</PathWithFileName>
       <FilenameWithoutPath>spi.c</FilenameWithoutPath>
@@ -778,10 +778,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>5</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>176</TopLine>
+      <CurrentLine>176</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\HARDWARE\TEXT\text.c</PathWithFileName>
       <FilenameWithoutPath>text.c</FilenameWithoutPath>
@@ -794,8 +794,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>136</TopLine>
+      <CurrentLine>155</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\HARDWARE\TEXT\fontupd.c</PathWithFileName>
       <FilenameWithoutPath>fontupd.c</FilenameWithoutPath>
@@ -806,10 +806,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>2</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>223</TopLine>
-      <CurrentLine>225</CurrentLine>
+      <TopLine>196</TopLine>
+      <CurrentLine>196</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\HARDWARE\TOUCH\touch.c</PathWithFileName>
       <FilenameWithoutPath>touch.c</FilenameWithoutPath>
@@ -1179,6 +1179,32 @@
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
   </Group>
+
+  <AlienFiles>
+    <PathWithFilename>C:\Users\matao\Desktop\未完成的\STM32Media\HARDWARE\TOUCH\touch.h</PathWithFilename>
+    <TopLine>31</TopLine>
+    <CurrentLine>47</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
 
   <WinLayout>
     <sActiveDebugView>Default</sActiveDebugView>
@@ -2775,9 +2801,9 @@
       <Documents>
         <Doc>
           <Name>.\USER\main.c</Name>
-          <ColumnNumber>18</ColumnNumber>
-          <TopLine>188</TopLine>
-          <CurrentLine>188</CurrentLine>
+          <ColumnNumber>77</ColumnNumber>
+          <TopLine>125</TopLine>
+          <CurrentLine>131</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\HARDWARE\24CXX\i2cee.c</Name>
@@ -2787,15 +2813,39 @@
         </Doc>
         <Doc>
           <Name>.\HARDWARE\TOUCH\touch.c</Name>
-          <ColumnNumber>2</ColumnNumber>
-          <TopLine>223</TopLine>
-          <CurrentLine>225</CurrentLine>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>196</TopLine>
+          <CurrentLine>196</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\HARDWARE\LCD\lcd.c</Name>
           <ColumnNumber>17</ColumnNumber>
           <TopLine>181</TopLine>
           <CurrentLine>181</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\HARDWARE\TEXT\text.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>176</TopLine>
+          <CurrentLine>176</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\HARDWARE\TEXT\fontupd.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>136</TopLine>
+          <CurrentLine>155</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\HARDWARE\TOUCH\touch.h</Name>
+          <ColumnNumber>11</ColumnNumber>
+          <TopLine>31</TopLine>
+          <CurrentLine>47</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\HARDWARE\SPI\spi.c</Name>
+          <ColumnNumber>14</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>4</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

@@ -4,19 +4,6 @@
 #include "lcd.h"  
 #include "malloc.h"
 #include "usart.h"	 
-
-//////////////////////////////////////////////////////////////////////////////////	 
-//本程序只供学习使用，未经作者许可，不得用于其它任何用途
-//ALIENTEK战舰STM32开发板
-//字库更新 驱动代码	   
-//正点原子@ALIENTEK
-//技术论坛:www.openedv.com
-//修改日期:2012/9/18
-//版本：V1.0
-//版权所有，盗版必究。
-//Copyright(C) 广州市星翼电子科技有限公司 2009-2019
-//All rights reserved									  
-//////////////////////////////////////////////////////////////////////////////////
 						   
 u32 FONTINFOADDR=100000;//(1024*2+500)*1024;//默认是6M的地址
 //字库信息结构体. 
@@ -159,12 +146,12 @@ u8 font_init(void)
 	FONTINFOADDR=100000;			//W25Q64,6M以后	 
 	ftinfo.ugbkaddr=FONTINFOADDR+25;		//UNICODEGBK 表存放首地址固定地址
 	SPI_Flash_Read((u8*)&ftinfo,FONTINFOADDR,sizeof(ftinfo));//读出ftinfo结构体数据
-	printf("unigbk的地址:%x\n",ftinfo.ugbkaddr);
-	printf("unigbk的大小:%d\n",ftinfo.ugbksize);
-	printf("gbk12地址	:%x\n",ftinfo.f12addr);
-	printf("gbk12的大小:%d\n",ftinfo.gbk12size);
-	printf("gbk16地址:%x\n",ftinfo.f16addr);
-	printf("gbk16的大小:%d\n",ftinfo.gkb16size);
+//	printf("unigbk的地址:%x\n",ftinfo.ugbkaddr);
+//	printf("unigbk的大小:%d\n",ftinfo.ugbksize);
+//	printf("gbk12地址	:%x\n",ftinfo.f12addr);
+//	printf("gbk12的大小:%d\n",ftinfo.gbk12size);
+//	printf("gbk16地址:%x\n",ftinfo.f16addr);
+//	printf("gbk16的大小:%d\n",ftinfo.gkb16size);
 
 	if(ftinfo.fontok!=0XAA)return 1;		//字库错误. 
 	return 0;		    

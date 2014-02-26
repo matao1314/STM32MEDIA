@@ -29,10 +29,13 @@ static void I2C_GPIO_Config(void)
 
 	/* 使能与 I2C1 有关的时钟 */
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
-  RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1,ENABLE);  
-    
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1,ENABLE); 
+	 
+	/* I2C1_SCL on PB.08, I2C1_SDA on PB.09 */
+	GPIO_PinRemapConfig(GPIO_Remap_I2C1, ENABLE);
+
   /* PB6-I2C1_SCL、PB7-I2C1_SDA*/
-  GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_6 | GPIO_Pin_7;
+  GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_8 | GPIO_Pin_9;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_OD;// 开漏输出
   GPIO_Init(GPIOB, &GPIO_InitStructure);
@@ -387,3 +390,4 @@ void I2C_EE_WaitEepromStandbyState(void)
     /* STOP condition */    
     I2C_GenerateSTOP(I2C1, ENABLE); // Added by Najoua 27/08/2008
 }
+
