@@ -16,4 +16,7 @@ void I2C_EE_PageWrite(u8* pBuffer, u8 WriteAddr, u8 NumByteToWrite);
 void I2C_EE_BufferRead(u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
 void I2C_EE_WaitEepromStandbyState(void);
 
+void I2CEE_WriteNLenByte(u8 WriteAddr,u32* DataToWrite,u8 Len);
+u32 I2CEE_ReadLenByte(u8 ReadAddr,u8 Len);
+
 #endif /* __I2C_EE_H */

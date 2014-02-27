@@ -391,3 +391,39 @@ void I2C_EE_WaitEepromStandbyState(void)
     I2C_GenerateSTOP(I2C1, ENABLE); // Added by Najoua 27/08/2008
 }
 
+#define  EEP_Firstpage      0x00
+
+//在AT24CXX里面的指定地址开始写入长度为Len的数据
+//该函数用于写入16bit或者32bit的数据.
+//WriteAddr  :开始写入的地址  
+//DataToWrite:数据数组首地址
+//Len        :要写入数据的长度2,4
+void I2CEE_WriteNLenByte(u8 WriteAddr,u32* DataToWrite,u8 Len)
+{  	
+	u8 t;
+	for(t=0;t<Len;t++)	//((DataToWrite>>(8*t))&0xff)
+	{
+		 I2C_EE_BufferWrite((u8*)((*DataToWrite>>(8*t))&0xff),WriteAddr+t,EEP_Firstpage);
+	}												    
+}
+
+//在AT24CXX里面的指定地址开始读出长度为Len的数据
+//该函数用于读出16bit或者32bit的数据.
+//ReadAddr   :开始读出的地址 
+//返回值     :数据
+//Len        :要读出数据的长度2,4
+u32 I2CEE_ReadLenByte(u8 ReadAddr,u8 Len)
+{  	
+	u8 t;
+	u32 temp=0;
+	u8 *data;
+	for(t=0;t<Len;t++)
+	{
+		temp<<=8;
+		//temp+=AT24CXX_ReadOneByte(ReadAddr+Len-t-1); 
+		I2C_EE_BufferRead(data,ReadAddr+Len-t-1,1);
+	 				   
+	}
+	return temp;												    
+}
+

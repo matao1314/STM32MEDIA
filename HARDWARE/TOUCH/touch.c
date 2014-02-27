@@ -206,11 +206,11 @@ void TP_Save_Adjdata(void)
 	temp=tp_dev.xfac*100000000;//保存x校正因素      
     I2C_EE_BufferWrite(temp,SAVE_ADDR_BASE,4);   
 	temp=tp_dev.yfac*100000000;//保存y校正因素    
-    AT24CXX_WriteLenByte(SAVE_ADDR_BASE+4,temp,4);
+    I2CEE_WriteNLenByte(SAVE_ADDR_BASE+4,temp,4);
 	//保存x偏移量
-    AT24CXX_WriteLenByte(SAVE_ADDR_BASE+8,tp_dev.xoff,2);		    
+    I2CEE_WriteNLenByte(SAVE_ADDR_BASE+8,tp_dev.xoff,2);		    
 	//保存y偏移量
-	AT24CXX_WriteLenByte(SAVE_ADDR_BASE+10,tp_dev.yoff,2);	
+	I2CEE_WriteNLenByte(SAVE_ADDR_BASE+10,tp_dev.yoff,2);	
 	//保存触屏类型
 	AT24CXX_WriteOneByte(SAVE_ADDR_BASE+12,tp_dev.touchtype);	
 	temp=0X0A;//标记校准过了
@@ -228,14 +228,14 @@ u8 TP_Get_Adjdata(void)
 	tempfac=AT24CXX_ReadOneByte(SAVE_ADDR_BASE+13);//读取标记字,看是否校准过！ 		 
 	if(tempfac==0X0A)//触摸屏已经校准过了			   
 	{    												 
-		tempfac=AT24CXX_ReadLenByte(SAVE_ADDR_BASE,4);		   
+		tempfac=I2CEE_ReadLenByte(SAVE_ADDR_BASE,4);		   
 		tp_dev.xfac=(float)tempfac/100000000;//得到x校准参数
-		tempfac=AT24CXX_ReadLenByte(SAVE_ADDR_BASE+4,4);			          
+		tempfac=I2CEE_ReadLenByte(SAVE_ADDR_BASE+4,4);			          
 		tp_dev.yfac=(float)tempfac/100000000;//得到y校准参数
 	    //得到x偏移量
-		tp_dev.xoff=AT24CXX_ReadLenByte(SAVE_ADDR_BASE+8,2);			   	  
+		tp_dev.xoff=I2CEE_ReadLenByte(SAVE_ADDR_BASE+8,2);			   	  
  	    //得到y偏移量
-		tp_dev.yoff=AT24CXX_ReadLenByte(SAVE_ADDR_BASE+10,2);				 	  
+		tp_dev.yoff=I2CEE_ReadLenByte(SAVE_ADDR_BASE+10,2);				 	  
  		tp_dev.touchtype=AT24CXX_ReadOneByte(SAVE_ADDR_BASE+12);//读取触屏类型标记
 		if(tp_dev.touchtype)//X,Y方向与屏幕相反
 		{

@@ -143,7 +143,7 @@ int main(void)
 	LED_Init();
  	mem_init(SRAMIN);	//初始化内部内存池
 	SPI1_Init();		
-  I2C_EE_Init();
+  //I2C_EE_Init();
 	//I2C_Test();
 
 	I2C_EE_BufferWrite( &a, EEP_Firstpage, 1);	 

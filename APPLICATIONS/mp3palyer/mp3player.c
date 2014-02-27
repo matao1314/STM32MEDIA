@@ -158,8 +158,6 @@ void mp3_play(void)
     res=f_opendir(&mp3dir,"0:/MUSIC"); //打开目录
 	if(res==FR_OK)
 	{		
-	  printf("RUNING HEAR11111111111111111!\r\n"); 
-
 		curindex=0;//当前索引为0
 		while(1)//全部查询一遍
 		{
@@ -178,8 +176,7 @@ void mp3_play(void)
    	curindex=0;											//从0开始显示
    	res=f_opendir(&mp3dir,(const TCHAR*)"0:/MUSIC"); 	//打开目录
 	while(res==FR_OK)//打开成功
-	{			printf("RUNING HEAR22222222222222!\r\n"); 
-
+	{		
 		    dir_sdi(&mp3dir,mp3indextbl[curindex]);			//改变当前目录索引	   
         res=f_readdir(&mp3dir,&mp3fileinfo);       		//读取目录下的一个文件
         if(res!=FR_OK||mp3fileinfo.fname[0]==0)break;	//错误了/到末尾了,退出
@@ -224,9 +221,8 @@ u8 mp3_play_song(u8 *pname)
 	databuf=(u8*)mymalloc(SRAMIN,4096);		//开辟4096字节的内存区域
 	if(databuf==NULL||fmp3==NULL)rval=0XFF ;//内存申请失败.
 	if(rval==0)
-	{		printf("RUNING HEAR3333333333333333!\r\n"); 
-  
-	  	VS_Restart_Play();  					//重启播放 
+	{	  
+	  VS_Restart_Play();  					//重启播放 
 		VS_Set_All();        					//设置音量等信息 			 
 		VS_Reset_DecodeTime();					//复位解码时间 	  
 		res=f_typetell(pname);	 	 			//得到文件后缀	 			  	 						 
@@ -291,31 +287,4 @@ u8 mp3_play_song(u8 *pname)
 	myfree(SRAMIN,fmp3);
 	return rval;	  	 		  	    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
