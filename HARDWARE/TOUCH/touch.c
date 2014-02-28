@@ -212,9 +212,11 @@ void TP_Save_Adjdata(void)
 	//保存y偏移量
 	I2CEE_WriteNLenByte(SAVE_ADDR_BASE+10,tp_dev.yoff,2);	
 	//保存触屏类型
-	AT24CXX_WriteOneByte(SAVE_ADDR_BASE+12,tp_dev.touchtype);	
+	I2C_EE_ByteWrite(&tp_dev.touchtype,SAVE_ADDR_BASE+12)
+	//AT24CXX_WriteOneByte(SAVE_ADDR_BASE+12,tp_dev.touchtype);	
 	temp=0X0A;//标记校准过了
-	AT24CXX_WriteOneByte(SAVE_ADDR_BASE+13,temp); 
+	//AT24CXX_WriteOneByte(SAVE_ADDR_BASE+13,temp); 
+	I2C_EE_ByteWrite(SAVE_ADDR_BASE+13,&temp);
 
 //I2C_EE_BufferWrite( I2c_Buf_Write, EEP_Firstpage, 256);	 
 
