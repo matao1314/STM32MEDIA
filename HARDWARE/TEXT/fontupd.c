@@ -83,7 +83,7 @@ u8 updata_fontx(u16 x,u16 y,u8 size,u8 *fxpath,u8 fx)
 	 		res=f_read(fftemp,tempbuf,512,(UINT *)&bread);		//读取数据	 
 			if(res!=FR_OK)break;								//执行错误
 			SPI_Flash_Write(tempbuf,offx+flashaddr,512);		//从0开始写入4096个数据  
-	  		offx+=bread;	  
+	  	offx+=bread;	  
 			fupd_prog(x,y,size,fftemp->fsize,offx);	 			//进度显示
 			if(bread!=512)break;								//读完了.
 	 	} 	

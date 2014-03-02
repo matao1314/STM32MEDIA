@@ -5,7 +5,9 @@
 #include "math.h"
 #include "i2cee.h"
 #include "spi.h"
-   
+#include "usart.h"		
+#include "common.h"
+
 _m_tp_dev tp_dev=
 {
 	TP_Init,
@@ -50,7 +52,7 @@ void TP_Write_Byte(u8 num)
 u16 TP_Read_AD(u8 CMD)	  
 { 	 
     u16 buf,temp;
-		TCS=0; 
+		CS_Seclect(CS_SPI_TOUCH); 
 		TP_Write_Byte(CMD);//发送命令字
    	delay_us(6);//ADS7846的转换时间最长为6us
     temp= SPI1_ReadWriteByte(0xFF); 
@@ -58,8 +60,8 @@ u16 TP_Read_AD(u8 CMD)
     temp=SPI1_ReadWriteByte(0xFF);
     buf |= temp; 
 		buf>>=4;
-		TCS=1;//释放片选	 
-    return   buf; 
+		TCS=1;//释放片选
+    return buf; 
 }
 //读取一个坐标值(x或者y)
 //连续读取READ_TIMES次数据,对这些数据升序排列,
@@ -101,7 +103,7 @@ u8 TP_Read_XY(u16 *x,u16 *y)
 {
 	u16 xtemp,ytemp;			 	 		  
 	xtemp=TP_Read_XOY(CMD_RDX);
-	ytemp=TP_Read_XOY(CMD_RDY);	  												   
+	ytemp=TP_Read_XOY(CMD_RDY);
 	//if(xtemp<100||ytemp<100)return 0;//读数失败
 	*x=xtemp;
 	*y=ytemp;
@@ -119,17 +121,17 @@ u8 TP_Read_XY2(u16 *x,u16 *y)
 	u16 x1,y1;
  	u16 x2,y2;
  	u8 flag;    
-    flag=TP_Read_XY(&x1,&y1);   
-    if(flag==0)return(0);
-    flag=TP_Read_XY(&x2,&y2);	   
-    if(flag==0)return(0);   
-    if(((x2<=x1&&x1<x2+ERR_RANGE)||(x1<=x2&&x2<x1+ERR_RANGE))//前后两次采样在+-50内
-    &&((y2<=y1&&y1<y2+ERR_RANGE)||(y1<=y2&&y2<y1+ERR_RANGE)))
-    {
-        *x=(x1+x2)/2;
-        *y=(y1+y2)/2;
-        return 1;
-    }else return 0;	  
+  flag=TP_Read_XY(&x1,&y1);   
+  if(flag==0)return(0);
+  flag=TP_Read_XY(&x2,&y2);	   
+  if(flag==0)return(0);   
+  if(((x2<=x1&&x1<x2+ERR_RANGE)||(x1<=x2&&x2<x1+ERR_RANGE))//前后两次采样在+-50内
+  &&((y2<=y1&&y1<y2+ERR_RANGE)||(y1<=y2&&y2<y1+ERR_RANGE)))
+  {
+    *x=(x1+x2)/2;
+    *y=(y1+y2)/2;
+    return 1;
+  }else return 0;	  
 }  
 //////////////////////////////////////////////////////////////////////////////////		  
 //与LCD部分有关的函数  
@@ -180,8 +182,7 @@ u8 TP_Scan(u8 tp)
 			tp_dev.x0=tp_dev.x;//记录第一次按下时的坐标
 			tp_dev.y0=tp_dev.y;  	   			 
 		}			   
-	}else
-	{
+	}else{
 		if(tp_dev.sta&TP_PRES_DOWN)//之前是被按下的
 		{
 			tp_dev.sta&=~(1<<7);//标记按键松开	
@@ -203,23 +204,23 @@ void TP_Save_Adjdata(void)
 {
 	s32 temp;			 
 	//保存校正结果!		   							  
-	temp=tp_dev.xfac*100000000;//保存x校正因素      
-    I2C_EE_BufferWrite(temp,SAVE_ADDR_BASE,4);   
-	temp=tp_dev.yfac*100000000;//保存y校正因素    
-    I2CEE_WriteNLenByte(SAVE_ADDR_BASE+4,temp,4);
+	temp=tp_dev.xfac*100000000;//保存x校正因素 
+	printf("TP_Save_tp_dev.xfac=%x\r\n",temp);      
+  I2C_EE_WriteNLenByte(SAVE_ADDR_BASE,temp,4);   
+	temp=tp_dev.yfac*100000000;//保存y校正因素 
+	printf("TP_Save_tp_dev.yfac=%x\r\n",temp);         
+  I2C_EE_WriteNLenByte(SAVE_ADDR_BASE+4,temp,4);
 	//保存x偏移量
-    I2CEE_WriteNLenByte(SAVE_ADDR_BASE+8,tp_dev.xoff,2);		    
+	printf("TP_Save_tp_dev.xoff=%x\r\n",tp_dev.xoff);         
+  I2C_EE_WriteNLenByte(SAVE_ADDR_BASE+8,tp_dev.xoff,2);		    
 	//保存y偏移量
-	I2CEE_WriteNLenByte(SAVE_ADDR_BASE+10,tp_dev.yoff,2);	
+	printf("TP_Save_tp_dev.yoff=%x\r\n",tp_dev.yoff);         
+	I2C_EE_WriteNLenByte(SAVE_ADDR_BASE+10,tp_dev.yoff,2);	
 	//保存触屏类型
-	I2C_EE_ByteWrite(&tp_dev.touchtype,SAVE_ADDR_BASE+12)
-	//AT24CXX_WriteOneByte(SAVE_ADDR_BASE+12,tp_dev.touchtype);	
-	temp=0X0A;//标记校准过了
-	//AT24CXX_WriteOneByte(SAVE_ADDR_BASE+13,temp); 
-	I2C_EE_ByteWrite(SAVE_ADDR_BASE+13,&temp);
-
-//I2C_EE_BufferWrite( I2c_Buf_Write, EEP_Firstpage, 256);	 
-
+	printf("TP_Save_tp_dev.touchtype=%x\r\n",tp_dev.touchtype);         
+	I2C1_WriteByte(SAVE_ADDR_BASE+12,tp_dev.touchtype);	
+	temp=0XAA;//标记校准过了
+	I2C1_WriteByte(SAVE_ADDR_BASE+13,temp); 
 }
 //得到保存在EEPROM里面的校准值
 //返回值：1，成功获取数据
@@ -227,18 +228,29 @@ void TP_Save_Adjdata(void)
 u8 TP_Get_Adjdata(void)
 {					  
 	s32 tempfac;
-	tempfac=AT24CXX_ReadOneByte(SAVE_ADDR_BASE+13);//读取标记字,看是否校准过！ 		 
-	if(tempfac==0X0A)//触摸屏已经校准过了			   
+	tempfac=I2C_EE_ReadByte(SAVE_ADDR_BASE+13);//读取标记字,看是否校准过！
+	printf("TP_Get_tempfac=%x\r\n",tempfac);         
+ 		 
+	if(tempfac==0XAA)//触摸屏已经校准过了			   
 	{    												 
-		tempfac=I2CEE_ReadLenByte(SAVE_ADDR_BASE,4);		   
+		tempfac=I2C_EE_ReadLenByte(SAVE_ADDR_BASE,4);	
+				printf("a=%x\r\n",tempfac); 
+	   
 		tp_dev.xfac=(float)tempfac/100000000;//得到x校准参数
-		tempfac=I2CEE_ReadLenByte(SAVE_ADDR_BASE+4,4);			          
+		tempfac=I2C_EE_ReadLenByte(SAVE_ADDR_BASE+4,4);			          
+				printf("a=%x\r\n",tempfac); 
 		tp_dev.yfac=(float)tempfac/100000000;//得到y校准参数
 	    //得到x偏移量
-		tp_dev.xoff=I2CEE_ReadLenByte(SAVE_ADDR_BASE+8,2);			   	  
+		tp_dev.xoff=I2C_EE_ReadLenByte(SAVE_ADDR_BASE+8,2);	
+						printf("a=%x\r\n",tp_dev.xoff); 
+		   	  
  	    //得到y偏移量
-		tp_dev.yoff=I2CEE_ReadLenByte(SAVE_ADDR_BASE+10,2);				 	  
- 		tp_dev.touchtype=AT24CXX_ReadOneByte(SAVE_ADDR_BASE+12);//读取触屏类型标记
+		tp_dev.yoff=I2C_EE_ReadLenByte(SAVE_ADDR_BASE+10,2);
+								printf("a=%x\r\n",tp_dev.yoff); 
+				 	  
+ 		tp_dev.touchtype=I2C_EE_ReadByte(SAVE_ADDR_BASE+12);//读取触屏类型标记
+								printf("a=%x\r\n",tp_dev.touchtype); 
+
 		if(tp_dev.touchtype)//X,Y方向与屏幕相反
 		{
 			CMD_RDX=0X90;
@@ -431,7 +443,36 @@ void TP_Adjust(void)
 			break;
 	 	} 
  	}
-}		  
+}
+#if 0
+/********************************************************
+* 函数名：TOUCH_NVIC_Configuration
+* 描述  ：2046 Touch INT 嵌套中断配置
+* 注意  ：留意一下优先级
+*********************************************************/    
+static void TP_NVIC_Config(void)
+{
+    NVIC_InitTypeDef NVIC_InitStructure;
+		EXTI_InitTypeDef EXTI_InitStructure;
+
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+
+
+    EXTI_InitStructure.EXTI_Line = EXTI_Line1;
+    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;
+    EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+    EXTI_Init(&EXTI_InitStructure);
+    GPIO_EXTILineConfig(GPIO_PortSourceGPIOC, GPIO_PinSource1);    
+    /*使能EXTI1 中断 */		      
+    NVIC_InitStructure.NVIC_IRQChannel = EXTI1_IRQn  ;    
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&NVIC_InitStructure);
+}
+#endif		  
 //触摸屏初始化  		    
 //返回值:0,没有进行校准
 //       1,进行过校准
@@ -446,15 +487,13 @@ u8 TP_Init(void)
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;// 复用推挽输出		 
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;								
   GPIO_Init(GPIOC, &GPIO_InitStructure);									     
-  /* 2046 INT_IRQ --PC6*/
+  /* 2046  INT_IRQ --PC6*/
   GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_1 ;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD ;
   GPIO_Init(GPIOC, &GPIO_InitStructure);
-
-  GPIO_SetBits(GPIOC, GPIO_Pin_2|GPIO_Pin_3 );//Off all led		 	 
- 
+//  TP_NVIC_Config();//TP Interrupt 
 	TP_Read_XY(&tp_dev.x,&tp_dev.y);//第一次读取初始化	 
-   I2C_EE_Init();//初始化24CXX
+  I2C_EE_Init();//初始化24CXX
 	if(TP_Get_Adjdata())return 0;//已经校准
 	else			   //未校准?
 	{ 										    

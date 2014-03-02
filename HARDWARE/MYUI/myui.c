@@ -55,10 +55,10 @@ rbtn->bcfucolor=WHITE;	//松开时的颜色
 rbtn->sta=0;
 btn_draw(rbtn);
 
-//gui_show_strmid(60,120,59,12,APPPLAY_NAME_COLOR,12,"编码器");
-//gui_show_strmid(160,120,59,12,APPPLAY_NAME_COLOR,12,"姿态");
-//gui_show_strmid(260,120,59,12,APPPLAY_NAME_COLOR,12,"设置");
-//gui_show_strmid(360,120,59,12,APPPLAY_NAME_COLOR,12,"调整");
+gui_show_strmid(60,120,59,12,APPPLAY_NAME_COLOR,12,"编码器");
+gui_show_strmid(160,120,59,12,APPPLAY_NAME_COLOR,12,"姿态");
+gui_show_strmid(260,120,59,12,APPPLAY_NAME_COLOR,12,"设置");
+gui_show_strmid(360,120,59,12,APPPLAY_NAME_COLOR,12,"调整");
 
 minibmp_decode((u8*)icos_path[0],40,40,60,60,0,0);    
 minibmp_decode((u8*)icos_path[1],120,40,60,60,0,0);    

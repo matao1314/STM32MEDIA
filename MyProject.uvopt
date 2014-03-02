@@ -134,7 +134,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGTARM</Key>
-          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(100=-1,-1,-1,-1,0)(110=-1,-1,-1,-1,0)(111=-1,-1,-1,-1,0)(1011=-1,-1,-1,-1,0)(180=-1,-1,-1,-1,0)(120=-1,-1,-1,-1,0)(121=-1,-1,-1,-1,0)(122=-1,-1,-1,-1,0)(123=-1,-1,-1,-1,0)(124=-1,-1,-1,-1,0)(125=-1,-1,-1,-1,0)(126=-1,-1,-1,-1,0)(140=-1,-1,-1,-1,0)(240=-1,-1,-1,-1,0)(190=-1,-1,-1,-1,0)(200=-1,-1,-1,-1,0)(170=-1,-1,-1,-1,0)(130=-1,-1,-1,-1,0)(131=-1,-1,-1,-1,0)(132=-1,-1,-1,-1,0)(133=-1,-1,-1,-1,0)(160=-1,-1,-1,-1,0)(161=-1,-1,-1,-1,0)(162=-1,-1,-1,-1,0)(210=-1,-1,-1,-1,0)(211=-1,-1,-1,-1,0)(220=-1,-1,-1,-1,0)(221=-1,-1,-1,-1,0)(230=-1,-1,-1,-1,0)(231=-1,-1,-1,-1,0)(232=-1,-1,-1,-1,0)(233=-1,-1,-1,-1,0)(150=-1,-1,-1,-1,0)(151=-1,-1,-1,-1,0)</Name>
+          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(100=-1,-1,-1,-1,0)(110=-1,-1,-1,-1,0)(111=-1,-1,-1,-1,0)(1011=-1,-1,-1,-1,0)(180=-1,-1,-1,-1,0)(120=-1,-1,-1,-1,0)(121=-1,-1,-1,-1,0)(122=723,187,1134,581,0)(123=-1,-1,-1,-1,0)(124=-1,-1,-1,-1,0)(125=-1,-1,-1,-1,0)(126=-1,-1,-1,-1,0)(140=-1,-1,-1,-1,0)(240=-1,-1,-1,-1,0)(190=-1,-1,-1,-1,0)(200=-1,-1,-1,-1,0)(170=-1,-1,-1,-1,0)(130=-1,-1,-1,-1,0)(131=-1,-1,-1,-1,0)(132=-1,-1,-1,-1,0)(133=-1,-1,-1,-1,0)(160=-1,-1,-1,-1,0)(161=-1,-1,-1,-1,0)(162=-1,-1,-1,-1,0)(210=-1,-1,-1,-1,0)(211=-1,-1,-1,-1,0)(220=-1,-1,-1,-1,0)(221=-1,-1,-1,-1,0)(230=-1,-1,-1,-1,0)(231=-1,-1,-1,-1,0)(232=-1,-1,-1,-1,0)(233=-1,-1,-1,-1,0)(150=-1,-1,-1,-1,0)(151=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -229,7 +229,7 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>17</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
@@ -299,13 +299,27 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>50</ColumnNumber>
+      <ColumnNumber>27</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>157</TopLine>
-      <CurrentLine>160</CurrentLine>
+      <TopLine>106</TopLine>
+      <CurrentLine>124</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\USER\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>4</GroupNumber>
+      <FileNumber>8</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>15</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\USER\common.c</PathWithFileName>
+      <FilenameWithoutPath>common.c</FilenameWithoutPath>
     </File>
   </Group>
 
@@ -316,7 +330,7 @@
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>8</FileNumber>
+      <FileNumber>9</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -330,7 +344,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>9</FileNumber>
+      <FileNumber>10</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -344,7 +358,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>10</FileNumber>
+      <FileNumber>11</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -358,7 +372,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>11</FileNumber>
+      <FileNumber>12</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -372,7 +386,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>12</FileNumber>
+      <FileNumber>13</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -386,7 +400,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>13</FileNumber>
+      <FileNumber>14</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -400,7 +414,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>14</FileNumber>
+      <FileNumber>15</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -414,7 +428,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>15</FileNumber>
+      <FileNumber>16</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -428,7 +442,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>16</FileNumber>
+      <FileNumber>17</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -442,7 +456,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>17</FileNumber>
+      <FileNumber>18</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -456,7 +470,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>18</FileNumber>
+      <FileNumber>19</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -470,7 +484,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>19</FileNumber>
+      <FileNumber>20</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -484,7 +498,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>20</FileNumber>
+      <FileNumber>21</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -498,7 +512,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>21</FileNumber>
+      <FileNumber>22</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -512,7 +526,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>22</FileNumber>
+      <FileNumber>23</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -526,7 +540,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>23</FileNumber>
+      <FileNumber>24</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -540,7 +554,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>24</FileNumber>
+      <FileNumber>25</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -554,7 +568,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>25</FileNumber>
+      <FileNumber>26</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -568,7 +582,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>26</FileNumber>
+      <FileNumber>27</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -582,7 +596,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>27</FileNumber>
+      <FileNumber>28</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -596,7 +610,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>28</FileNumber>
+      <FileNumber>29</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -610,7 +624,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>29</FileNumber>
+      <FileNumber>30</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -624,7 +638,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>30</FileNumber>
+      <FileNumber>31</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -645,11 +659,11 @@
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>31</FileNumber>
+      <FileNumber>32</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>17</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
@@ -659,11 +673,11 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>32</FileNumber>
+      <FileNumber>33</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>14</ColumnNumber>
+      <ColumnNumber>5</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
@@ -673,25 +687,25 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>33</FileNumber>
+      <FileNumber>34</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>22</ColumnNumber>
+      <ColumnNumber>13</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>19</TopLine>
+      <CurrentLine>39</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\HARDWARE\FLASH\flash.c</PathWithFileName>
       <FilenameWithoutPath>flash.c</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>34</FileNumber>
+      <FileNumber>35</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>6</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
@@ -701,11 +715,11 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>35</FileNumber>
+      <FileNumber>36</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>41</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
@@ -715,11 +729,11 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>36</FileNumber>
+      <FileNumber>37</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>66</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
@@ -729,7 +743,7 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>37</FileNumber>
+      <FileNumber>38</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -743,31 +757,17 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>38</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\HARDWARE\VS10XX\vs10XX.c</PathWithFileName>
-      <FilenameWithoutPath>vs10XX.c</FilenameWithoutPath>
-    </File>
-    <File>
-      <GroupNumber>6</GroupNumber>
       <FileNumber>39</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>90</TopLine>
+      <CurrentLine>90</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\HARDWARE\TEXT\text.c</PathWithFileName>
-      <FilenameWithoutPath>text.c</FilenameWithoutPath>
+      <PathWithFileName>.\HARDWARE\VS10XX\vs10XX.c</PathWithFileName>
+      <FilenameWithoutPath>vs10XX.c</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
@@ -775,27 +775,27 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>12</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\HARDWARE\TEXT\fontupd.c</PathWithFileName>
-      <FilenameWithoutPath>fontupd.c</FilenameWithoutPath>
+      <PathWithFileName>.\HARDWARE\TEXT\text.c</PathWithFileName>
+      <FilenameWithoutPath>text.c</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
       <FileNumber>41</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>23</ColumnNumber>
+      <ColumnNumber>8</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>225</TopLine>
-      <CurrentLine>248</CurrentLine>
+      <TopLine>131</TopLine>
+      <CurrentLine>145</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\HARDWARE\TOUCH\touch.c</PathWithFileName>
-      <FilenameWithoutPath>touch.c</FilenameWithoutPath>
+      <PathWithFileName>.\HARDWARE\TEXT\fontupd.c</PathWithFileName>
+      <FilenameWithoutPath>fontupd.c</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
@@ -803,13 +803,13 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>7</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\HARDWARE\MYUI\myui.c</PathWithFileName>
-      <FilenameWithoutPath>myui.c</FilenameWithoutPath>
+      <PathWithFileName>.\HARDWARE\TOUCH\touch.c</PathWithFileName>
+      <FilenameWithoutPath>touch.c</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
@@ -819,8 +819,22 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>404</TopLine>
-      <CurrentLine>415</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\HARDWARE\MYUI\myui.c</PathWithFileName>
+      <FilenameWithoutPath>myui.c</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>6</GroupNumber>
+      <FileNumber>44</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\HARDWARE\24CXX\i2cee.c</PathWithFileName>
       <FilenameWithoutPath>i2cee.c</FilenameWithoutPath>
@@ -834,7 +848,7 @@
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>7</GroupNumber>
-      <FileNumber>44</FileNumber>
+      <FileNumber>45</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -848,7 +862,7 @@
     </File>
     <File>
       <GroupNumber>7</GroupNumber>
-      <FileNumber>45</FileNumber>
+      <FileNumber>46</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -862,7 +876,7 @@
     </File>
     <File>
       <GroupNumber>7</GroupNumber>
-      <FileNumber>46</FileNumber>
+      <FileNumber>47</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -876,7 +890,7 @@
     </File>
     <File>
       <GroupNumber>7</GroupNumber>
-      <FileNumber>47</FileNumber>
+      <FileNumber>48</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -890,11 +904,11 @@
     </File>
     <File>
       <GroupNumber>7</GroupNumber>
-      <FileNumber>48</FileNumber>
+      <FileNumber>49</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>2</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
@@ -911,14 +925,14 @@
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>8</GroupNumber>
-      <FileNumber>49</FileNumber>
+      <FileNumber>50</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>277</TopLine>
-      <CurrentLine>291</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\APPLICATIONS\mp3palyer\mp3player.c</PathWithFileName>
       <FilenameWithoutPath>mp3player.c</FilenameWithoutPath>
@@ -932,7 +946,7 @@
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>50</FileNumber>
+      <FileNumber>51</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -953,7 +967,7 @@
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>10</GroupNumber>
-      <FileNumber>51</FileNumber>
+      <FileNumber>52</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -967,7 +981,7 @@
     </File>
     <File>
       <GroupNumber>10</GroupNumber>
-      <FileNumber>52</FileNumber>
+      <FileNumber>53</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -981,7 +995,7 @@
     </File>
     <File>
       <GroupNumber>10</GroupNumber>
-      <FileNumber>53</FileNumber>
+      <FileNumber>54</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -995,7 +1009,7 @@
     </File>
     <File>
       <GroupNumber>10</GroupNumber>
-      <FileNumber>54</FileNumber>
+      <FileNumber>55</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -1016,7 +1030,7 @@
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>55</FileNumber>
+      <FileNumber>56</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -1030,7 +1044,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>56</FileNumber>
+      <FileNumber>57</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -1044,7 +1058,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>57</FileNumber>
+      <FileNumber>58</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -1058,7 +1072,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>58</FileNumber>
+      <FileNumber>59</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -1072,7 +1086,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>59</FileNumber>
+      <FileNumber>60</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -1086,7 +1100,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>60</FileNumber>
+      <FileNumber>61</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -1100,7 +1114,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>61</FileNumber>
+      <FileNumber>62</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -1114,7 +1128,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>62</FileNumber>
+      <FileNumber>63</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -1128,7 +1142,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>63</FileNumber>
+      <FileNumber>64</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -1164,35 +1178,9 @@
   </Group>
 
   <AlienFiles>
-    <PathWithFilename>C:\Users\matao\Desktop\未完成的\STM32Media\HARDWARE\TOUCH\touch.h</PathWithFilename>
-    <TopLine>55</TopLine>
-    <CurrentLine>55</CurrentLine>
-    <Constant>0</Constant>
-    <WindowPosition>
-      <length>0</length>
-      <flags>0</flags>
-      <showCmd>0</showCmd>
-      <MinPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MinPosition>
-      <MaxPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MaxPosition>
-      <NormalPosition>
-        <Top>0</Top>
-        <Left>0</Left>
-        <Right>0</Right>
-        <Bottom>0</Bottom>
-      </NormalPosition>
-    </WindowPosition>
-  </AlienFiles>
-
-  <AlienFiles>
-    <PathWithFilename>C:\Users\matao\Desktop\未完成的\STM32Media\HARDWARE\24CXX\i2cee.h</PathWithFilename>
-    <TopLine>1</TopLine>
-    <CurrentLine>20</CurrentLine>
+    <PathWithFilename>C:\Users\matao\Desktop\未完成的\STM32Media\FWLIB\inc\stm32f10x_spi.h</PathWithFilename>
+    <TopLine>198</TopLine>
+    <CurrentLine>209</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -1860,7 +1848,7 @@
         <DockType>2</DockType>
         <DockLocation>4</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -1885,7 +1873,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -1910,7 +1898,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -1935,7 +1923,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -1960,7 +1948,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -1985,7 +1973,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -2010,7 +1998,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -2035,7 +2023,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -2060,7 +2048,7 @@
         <DockType>2</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -2085,7 +2073,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -2110,7 +2098,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -2135,7 +2123,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -2160,7 +2148,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -2185,7 +2173,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -2210,7 +2198,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -2235,7 +2223,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -2260,7 +2248,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -2285,7 +2273,7 @@
         <DockType>4</DockType>
         <DockLocation>2</DockLocation>
         <Pinned>0</Pinned>
-        <DockedRect_top>428</DockedRect_top>
+        <DockedRect_top>612</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
         <DockedRect_bottom>759</DockedRect_bottom>
         <DockedRect_right>1218</DockedRect_right>
@@ -2312,7 +2300,7 @@
         <Pinned>0</Pinned>
         <DockedRect_top>76</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
-        <DockedRect_bottom>424</DockedRect_bottom>
+        <DockedRect_bottom>608</DockedRect_bottom>
         <DockedRect_right>210</DockedRect_right>
         <FloatingRect_top>0</FloatingRect_top>
         <FloatingRect_left>0</FloatingRect_left>
@@ -2337,7 +2325,7 @@
         <Pinned>0</Pinned>
         <DockedRect_top>76</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
-        <DockedRect_bottom>424</DockedRect_bottom>
+        <DockedRect_bottom>608</DockedRect_bottom>
         <DockedRect_right>210</DockedRect_right>
         <FloatingRect_top>0</FloatingRect_top>
         <FloatingRect_left>0</FloatingRect_left>
@@ -2362,7 +2350,7 @@
         <Pinned>0</Pinned>
         <DockedRect_top>76</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
-        <DockedRect_bottom>424</DockedRect_bottom>
+        <DockedRect_bottom>608</DockedRect_bottom>
         <DockedRect_right>210</DockedRect_right>
         <FloatingRect_top>0</FloatingRect_top>
         <FloatingRect_left>0</FloatingRect_left>
@@ -2387,7 +2375,7 @@
         <Pinned>0</Pinned>
         <DockedRect_top>76</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
-        <DockedRect_bottom>424</DockedRect_bottom>
+        <DockedRect_bottom>608</DockedRect_bottom>
         <DockedRect_right>210</DockedRect_right>
         <FloatingRect_top>0</FloatingRect_top>
         <FloatingRect_left>0</FloatingRect_left>
@@ -2412,7 +2400,7 @@
         <Pinned>0</Pinned>
         <DockedRect_top>76</DockedRect_top>
         <DockedRect_left>0</DockedRect_left>
-        <DockedRect_bottom>424</DockedRect_bottom>
+        <DockedRect_bottom>608</DockedRect_bottom>
         <DockedRect_right>210</DockedRect_right>
         <FloatingRect_top>0</FloatingRect_top>
         <FloatingRect_left>0</FloatingRect_left>
@@ -2806,37 +2794,43 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>0</ActiveTab>
+      <ActiveTab>1</ActiveTab>
       <Documents>
         <Doc>
           <Name>.\USER\main.c</Name>
-          <ColumnNumber>50</ColumnNumber>
-          <TopLine>157</TopLine>
-          <CurrentLine>160</CurrentLine>
+          <ColumnNumber>27</ColumnNumber>
+          <TopLine>106</TopLine>
+          <CurrentLine>124</CurrentLine>
         </Doc>
         <Doc>
-          <Name>.\HARDWARE\TOUCH\touch.c</Name>
-          <ColumnNumber>23</ColumnNumber>
-          <TopLine>225</TopLine>
-          <CurrentLine>248</CurrentLine>
+          <Name>.\HARDWARE\FLASH\flash.c</Name>
+          <ColumnNumber>13</ColumnNumber>
+          <TopLine>19</TopLine>
+          <CurrentLine>39</CurrentLine>
         </Doc>
         <Doc>
-          <Name>.\HARDWARE\24CXX\i2cee.c</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>404</TopLine>
-          <CurrentLine>415</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\HARDWARE\TOUCH\touch.h</Name>
-          <ColumnNumber>15</ColumnNumber>
-          <TopLine>55</TopLine>
-          <CurrentLine>55</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\HARDWARE\24CXX\i2cee.h</Name>
-          <ColumnNumber>21</ColumnNumber>
+          <Name>.\HARDWARE\TEXT\text.c</Name>
+          <ColumnNumber>12</ColumnNumber>
           <TopLine>1</TopLine>
-          <CurrentLine>20</CurrentLine>
+          <CurrentLine>1</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\HARDWARE\TEXT\fontupd.c</Name>
+          <ColumnNumber>8</ColumnNumber>
+          <TopLine>131</TopLine>
+          <CurrentLine>145</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\HARDWARE\VS10XX\vs10XX.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>90</TopLine>
+          <CurrentLine>90</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\FWLIB\inc\stm32f10x_spi.h</Name>
+          <ColumnNumber>32</ColumnNumber>
+          <TopLine>198</TopLine>
+          <CurrentLine>209</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

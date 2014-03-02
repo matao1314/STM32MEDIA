@@ -391,18 +391,14 @@ void I2C_EE_WaitEepromStandbyState(void)
     I2C_GenerateSTOP(I2C1, ENABLE); // Added by Najoua 27/08/2008
 }
 
-#if  0
-/**********************************************************************/
-/*IIC写一个字节                                                       */                                                                                                                                         */
-/**********************************************************************/
-void I2C1_WriteByte(u8 id,u8 write_address,u8 byte)
+void I2C1_WriteByte(u8 write_address,u8 byte)
 {
 	while(I2C_GetFlagStatus(I2C1, I2C_FLAG_BUSY));
 	I2C_GenerateSTART(I2C1,ENABLE);
 	//产生起始条件
 	while(!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_MODE_SELECT));
 	//等待ACK	 
-	I2C_Send7bitAddress(I2C1,id,I2C_Direction_Transmitter);
+	I2C_Send7bitAddress(I2C1,EEPROM_ADDRESS,I2C_Direction_Transmitter);
 	//向设备发送设备地址
 	while(!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
 	//等待ACK
@@ -429,10 +425,8 @@ void I2C1_WriteByte(u8 id,u8 write_address,u8 byte)
 	/* STOP condition */    
 	I2C_GenerateSTOP(I2C1, ENABLE);  
 }
-/**********************************************************************/
-/*IIC读数据                                                           */                                                                                                                                 */
-/**********************************************************************/
-u8 I2C_EE_ReadByte(u8  id, u8 read_address)
+
+u8 I2C_EE_ReadByte(u8 read_address)
 {  
 	u8 temp;         
 	while(I2C_GetFlagStatus(I2C1, I2C_FLAG_BUSY));
@@ -441,7 +435,7 @@ u8 I2C_EE_ReadByte(u8  id, u8 read_address)
 	//产生起始信号
 	while(!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_MODE_SELECT));
 	//EV5
-	I2C_Send7bitAddress(I2C1, id, I2C_Direction_Transmitter);
+	I2C_Send7bitAddress(I2C1, EEPROM_ADDRESS, I2C_Direction_Transmitter);
 	//发送地址
 	while(!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
 	//EV6
@@ -455,33 +449,30 @@ u8 I2C_EE_ReadByte(u8  id, u8 read_address)
 	//重新发送
 	while(!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_MODE_SELECT));
 	//EV5
-	I2C_Send7bitAddress(I2C1, id, I2C_Direction_Receiver);
+	I2C_Send7bitAddress(I2C1, EEPROM_ADDRESS, I2C_Direction_Receiver);
 	//发送读地址
 	while(!I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
 	//EV6  
-    I2C_AcknowledgeConfig(I2C1, DISABLE);
-    I2C_GenerateSTOP(I2C1, ENABLE);
-    //关闭应答和停止条件产生
-    while(!(I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_RECEIVED)));            
-    temp = I2C_ReceiveData(I2C1);   
+  I2C_AcknowledgeConfig(I2C1, DISABLE);
+  I2C_GenerateSTOP(I2C1, ENABLE);
+  //关闭应答和停止条件产生
+  while(!(I2C_CheckEvent(I2C1, I2C_EVENT_MASTER_BYTE_RECEIVED)));            
+  temp = I2C_ReceiveData(I2C1);   
 	I2C_AcknowledgeConfig(I2C1, ENABLE);
 	return temp;
 }
-#endif
-
-#define  EEP_Firstpage      0x00
 
 //在AT24CXX里面的指定地址开始写入长度为Len的数据
 //该函数用于写入16bit或者32bit的数据.
 //WriteAddr  :开始写入的地址  
 //DataToWrite:数据数组首地址
 //Len        :要写入数据的长度2,4
-void I2C_EE_WriteNLenByte(u8 WriteAddr,u32* DataToWrite,u8 Len)
+void I2C_EE_WriteNLenByte(u8 WriteAddr,u32 DataToWrite,u8 Len)
 {  	
 	u8 t;
-	for(t=0;t<Len;t++)	//((DataToWrite>>(8*t))&0xff)
+	for(t=0;t<Len;t++)
 	{
-		 I2C_EE_BufferWrite((u8*)((*DataToWrite>>(8*t))&0xff),WriteAddr+t,EEP_Firstpage);
+		  I2C1_WriteByte(WriteAddr+t,((DataToWrite>>(8*t))&0xff));
 	}												    
 }
 
@@ -493,14 +484,11 @@ void I2C_EE_WriteNLenByte(u8 WriteAddr,u32* DataToWrite,u8 Len)
 u32 I2C_EE_ReadLenByte(u8 ReadAddr,u8 Len)
 {  	
 	u8 t;
-	u8 *data;
 	u32 temp=0;
 	for(t=0;t<Len;t++)
 	{
 		temp<<=8;
-		//temp+=AT24CXX_ReadOneByte(ReadAddr+Len-t-1); 
-		I2C_EE_BufferRead(data,ReadAddr+Len-t-1,1);	
-        temp+=*date;		
+		temp+=I2C_EE_ReadByte(ReadAddr+Len-t-1);	
 	}
 	return temp;												    
 }

@@ -28,7 +28,7 @@ void Get_HzMat(unsigned char *code,unsigned char *mat,u8 size)
 	unsigned long foffset; 
 	qh=*code;
 	ql=*(++code);
-	if(qh<0x81||ql<0x40||ql==0xff||qh==0xff)//非 常用汉字
+	if(qh<0x81||ql<0x40||ql==0xff||qh==0xff)//非常用汉字
 	{   		    
 	    for(i=0;i<(size*2);i++)*mat++=0x00;//填充满格
 	    return; //结束访问

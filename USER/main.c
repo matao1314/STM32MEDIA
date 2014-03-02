@@ -47,7 +47,7 @@ SD_Error SD_USER_Init(void)
 	/* Read CSD/CID MSD registers */
 	Status = SD_GetCardInfo( &SDCardInfo );//获得SD卡索引信息
 //printf( " \r\n Card 类型： %d ", SDCardInfo.CardType );
-  printf( " \r\n Card 容量MB： %d ", SDCardInfo.CardCapacity>>20 );
+  printf("SDCard容量 = %dMB\r\n", SDCardInfo.CardCapacity>>20);
 //printf( " \r\n Card 块大小 %d ", SDCardInfo.CardBlockSize );
 //printf( " \r\n RCA  ：%d ", SDCardInfo.RCA);
 //printf( " \r\n 制造商 ID is ：%d ", SDCardInfo.SD_cid.ManufacturerID );
@@ -79,83 +79,23 @@ void Load_Drow_Dialog(void)
 	LCD_ShowString(216,0,200,16,16,"RST");//显示清屏区域
   	POINT_COLOR=RED;//设置画笔蓝色 
 }
-
 /**
   * @brief  Main program.
   * @param  None
   * @retval None
   */
-u16 ID1=0;
-const u8 TEXT_Buffer[]={"WarShipSTM32 IIC TEST"};
-	u8 datatemp[sizeof(TEXT_Buffer)];
-#define  EEP_Firstpage      0x00
-u8 I2c_Buf_Write[256];
-u8 I2c_Buf_Read[256];
-
-void I2C_Test(void)
-{
-	u16 i;
-
-	printf("写入的数据\n\r");
-    
-	for ( i=0; i<=255; i++ ) //填充缓冲
-  {   
-    I2c_Buf_Write[i] = i;
-
-    printf("0x%02X ", I2c_Buf_Write[i]);
-    if(i%16 == 15)    
-        printf("\n\r");    
-   }
-
-  //将I2c_Buf_Write中顺序递增的数据写入EERPOM中 
-	I2C_EE_BufferWrite( I2c_Buf_Write, EEP_Firstpage, 256);	 
-  
-  printf("\n\r读出的数据\n\r");
-  //将EEPROM读出数据顺序保持到I2c_Buf_Read中 
-	I2C_EE_BufferRead(I2c_Buf_Read, EEP_Firstpage, 256); 
-
-  //将I2c_Buf_Read中的数据通过串口打印
-	for (i=0; i<256; i++)
-	{	
-		if(I2c_Buf_Read[i] != I2c_Buf_Write[i])
-		{
-			printf("0x%02X ", I2c_Buf_Read[i]);
-			printf("错误:I2C EEPROM写入与读出的数据不一致\n\r");
-			return;
-		}
-    printf("0x%02X ", I2c_Buf_Read[i]);
-    if(i%16 == 15)    
-        printf("\n\r");
-    
-	}
-  printf("I2C(AT24C02)读写测试成功\n\r");
-}
-
 int main(void)
 {
   /* Add your application code here
      */
-		 u8 a=1;
-		 u8 b=2; 
 	uart_init(72,115200);	 	
 	delay_init(72);	 
 	LCD_Init(); 
 	LED_Init();
  	mem_init(SRAMIN);	//初始化内部内存池
-	SPI1_Init();		
-  //I2C_EE_Init();
-	//I2C_Test();
-
-	I2C_EE_BufferWrite( &a, EEP_Firstpage, 1);	 
-	I2C_EE_BufferWrite( &b, EEP_Firstpage+1, 1);	 
-
-	I2C_EE_BufferRead(&b, EEP_Firstpage, 1); 
-	I2C_EE_BufferRead(&a, EEP_Firstpage+1, 1);
-	printf("a=%d",a); 
-	printf("b=%d",b); 
-	tp_dev.init();
-
-
+	SPI1_Init();
+	VS_Init();	  		//初始化VS1053 		
+  I2C_EE_Init();
 	//检测SD卡是否成功
 	while(SD_USER_Init()!=SD_OK)
 	{
@@ -172,38 +112,36 @@ int main(void)
 	exfuns_init();					//为fatfs相关变量申请内存  
 	f_mount(0,fs[0]); 		 		//挂载SD卡
 	f_mount(1,fs[1]); 				//挂载FLASH.
-  	while(font_init()) 				//检查字库
+  while(font_init()) 				//检查字库
 	{	    
 		LCD_ShowString(60,50,200,16,16,"Font Error!");
 		delay_ms(200);				  
 		LCD_Fill(60,50,240,66,WHITE);//清除显示	 
-			 	update_font(20,110,16,0);//从SD卡更新  	 
-    
+		update_font(20,110,16,0);//从SD卡更新  	 
 	}  	 
+	tp_dev.init();
  
-	VS_Init();	  		//初始化VS1053 
 	if(0==VS_HD_Reset()){
-	myprntf("HResetOk!\r\n"); 
+		myprntf("HResetOk!\r\n"); 
 	}
 
 	VS_Soft_Reset();
 	printf("SResetOk!\r\n"); 
-	ID1=	VS_Ram_Test();
+	VS_Ram_Test();
 	printf("Ram Test:0X%04X\r\n",VS_Ram_Test());//打印RAM测试结果	    
 	VS_Sine_Test();	   
 	printf("Board Init Over!\r\n");
 
 
 LCD_ShowString(60,150,240,320,16,"SYSTEM OK! ");
-gui_init();	
-piclib_init();//初始化画图	
-Draw_mainPage();//加载主界面
+//gui_init();	
+//piclib_init();//初始化画图	
+//Draw_mainPage();//加载主界面
   while (1)
   {
 	tp_dev.scan(0); 		 
 		if(tp_dev.sta&TP_PRES_DOWN)			//触摸屏被按下
 		{	
-
 			printf("X=%d\r\n",tp_dev.x); 
 			printf("Y=%d\r\n",tp_dev.y); 
 		 	if(tp_dev.x<lcddev.width&&tp_dev.y<lcddev.height)
@@ -212,11 +150,10 @@ Draw_mainPage();//加载主界面
 				else TP_Draw_Big_Point(tp_dev.x,tp_dev.y,RED);		//画图	  			   
 			}
 		}
-		mp3_play();
-  	delay_ms(500);
-	 LED0=0;
-   delay_ms(500);
-	 LED0=1;
-
+//		mp3_play();
+//  	delay_ms(500);
+//	 LED0=0;
+//   delay_ms(500);
+//	 LED0=1;
   }
 }

@@ -27,7 +27,7 @@ void SPI1_Init(void)
 	SPI_Init(SPI1, &SPI_InitStructure);  //根据SPI_InitStruct中指定的参数初始化外设SPIx寄存器
  
 	SPI_Cmd(SPI1, ENABLE); //使能SPI外设
-	SPI2_ReadWriteByte(0xff);//启动传输	 
+	SPI1_ReadWriteByte(0xff);//启动传输	 
 }
 ////////////////////////////////////////////////////////////////////////////////// 	  
  //以下是SPI模块的初始化代码，配置成主机模式，访问SD Card/W25X16/24L01/JF24C							  
@@ -59,11 +59,8 @@ void SPI2_Init(void)
 	SPI_InitStructure.SPI_CRCPolynomial = 7;	//CRC值计算的多项式
 	SPI_Init(SPI2, &SPI_InitStructure);  //根据SPI_InitStruct中指定的参数初始化外设SPIx寄存器
  
-	SPI_Cmd(SPI2, ENABLE); //使能SPI外设
-	
+	SPI_Cmd(SPI2, ENABLE); //使能SPI外设	
 	SPI2_ReadWriteByte(0xff);//启动传输	 
-
-
 }   
 //SPI 速度设置函数
 //SpeedSet:

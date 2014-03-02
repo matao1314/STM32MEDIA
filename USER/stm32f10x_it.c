@@ -152,6 +152,18 @@ void SDIO_IRQHandler(void)
   SD_ProcessIRQSrc();
 }
 
+//TP Interrupt Function
+//void EXTI1_IRQHandler(void)
+//{ 
+//  if(EXTI_GetITStatus(EXTI_Line1) != RESET)
+//  {	 	  printf("/TTTTTTTTTTTTTTTTTTTTTT!/\r\n"); 
+//
+//     GPIO_ResetBits(GPIOC, GPIO_Pin_1); 
+//			//touch_flag=1;
+//    EXTI_ClearITPendingBit(EXTI_Line1);
+//  }
+//}
+
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
