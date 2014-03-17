@@ -145,7 +145,7 @@ u8 font_init(void)
 	SPI_Flash_Init();
 	FONTINFOADDR=100000;			//W25Q64,6M以后	 
 	ftinfo.ugbkaddr=FONTINFOADDR+25;		//UNICODEGBK 表存放首地址固定地址
-	SPI_Flash_Read((u8*)&ftinfo,FONTINFOADDR,sizeof(ftinfo));//读出ftinfo结构体数据
+	SPI_Flash_Read((u8*)&ftinfo,FONTINFOADDR,sizeof(ftinfo));//读出ftinfo结构体数据?这个函数会影响TP
 //	printf("unigbk的地址:%x\n",ftinfo.ugbkaddr);
 //	printf("unigbk的大小:%d\n",ftinfo.ugbksize);
 //	printf("gbk12地址	:%x\n",ftinfo.f12addr);

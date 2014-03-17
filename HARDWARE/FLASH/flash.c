@@ -169,7 +169,10 @@ void SPI_Flash_Read(u8* pBuffer, u32 ReadAddr, u16 NumByteToRead)
 			SPI1_ReadWriteByte(0x00);//等待		    
 		}			   
 	}
-	SPI_FLASH_CS=1;	
+	SPI_FLASH_CS=1;
+		SPI1_SetSpeed(SPI_BaudRatePrescaler_256);//设置到高速模式
+	
+	
 } 
 //擦除指定的主存储器页（地址范围0-4095）
 void DF_page_earse(u16 page)
