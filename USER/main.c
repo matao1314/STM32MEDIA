@@ -23,7 +23,7 @@
 #include "text.h"
 #include "touch.h" 
 #include "myui.h"
-
+#include "key.h"
 //u16 volatile OSTime;	//fix error
 
 
@@ -94,7 +94,8 @@ int main(void)
 	LED_Init();
  	mem_init(SRAMIN);	//初始化内部内存池
 	SPI1_Init();
-	VS_Init();	  		//初始化VS1053 		
+	VS_Init();	  		//初始化VS1053 	
+	KEY_Init();	
   I2C_EE_Init();
 	//检测SD卡是否成功
 	while(SD_USER_Init()!=SD_OK)
@@ -134,26 +135,27 @@ int main(void)
 
 
 LCD_ShowString(60,150,240,320,16,"SYSTEM OK! ");
-//gui_init();	
-//piclib_init();//初始化画图	
-//Draw_mainPage();//加载主界面
+gui_init();	
+piclib_init();//初始化画图	
+Draw_mainPage();//加载主界面
   while (1)
   {
-	tp_dev.scan(0); 		 
-		if(tp_dev.sta&TP_PRES_DOWN)			//触摸屏被按下
-		{	
-			printf("X=%d\r\n",tp_dev.x); 
-			printf("Y=%d\r\n",tp_dev.y); 
-		 	if(tp_dev.x<lcddev.width&&tp_dev.y<lcddev.height)
-			{	
-				if(tp_dev.x>(lcddev.width-24)&&tp_dev.y<16)Load_Drow_Dialog();//清除
-				else TP_Draw_Big_Point(tp_dev.x,tp_dev.y,RED);		//画图	  			   
-			}
-		}
+	printf("AD VALUE==%d\r\n",KEY_Scan(0));
+//	tp_dev.scan(0); 		 
+//		if(tp_dev.sta&TP_PRES_DOWN)			//触摸屏被按下
+//		{	
+//			printf("X=%d\r\n",tp_dev.x); 
+//			printf("Y=%d\r\n",tp_dev.y); 
+//		 	if(tp_dev.x<lcddev.width&&tp_dev.y<lcddev.height)
+//			{	
+//				if(tp_dev.x>(lcddev.width-24)&&tp_dev.y<16)Load_Drow_Dialog();//清除
+//				else TP_Draw_Big_Point(tp_dev.x,tp_dev.y,RED);		//画图	  			   
+//			}
+//		}
 //		mp3_play();
-//  	delay_ms(500);
-//	 LED0=0;
-//   delay_ms(500);
-//	 LED0=1;
+  	delay_ms(500);
+	 LED0=0;
+   delay_ms(500);
+	 LED0=1;
   }
 }
